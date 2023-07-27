@@ -2,23 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../provider/provider.dart';
-
-
+import '../providers/providers.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isLoading = ref.watch(homeScreenProvider);
+    final state = ref.watch(homeScreenProvider);
     final router = GoRouter.of(context);
+
+    // Triggers a refresh action on the home screen, simulates a loading
+    // process, and then redirects the user to the search screen using Flutter
+    // Riverpod state management and navigation.
     toRefresh() async {
       await ref.read(homeScreenProvider.notifier).fakeLoadAndRedirect();
       router.go('/search');
     }
 
-    if (isLoading) {
+    if (state.isLoading) {
       // Show a loading indicator or splash screen here
       return const Scaffold(
         body: Center(
