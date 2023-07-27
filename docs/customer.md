@@ -4,6 +4,12 @@
 
 ## Customer
 
+### Login Screen
+
+### Registration Screen
+
+### Forget Password Screen
+
 ### Home Screen
 
     * the landing page.
