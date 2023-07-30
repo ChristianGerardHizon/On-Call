@@ -11,7 +11,9 @@ class HomeScreenNotifier extends StateNotifier<HomePageState> {
   HomeScreenNotifier() : super(const HomePageState());
 
   Future<void> fakeLoadAndRedirect() async {
-    state = const HomePageState();
+    state = const HomePageState(
+      isLoading: true,
+    );
 
     const delay = Duration(seconds: 3);
     await Future.delayed(delay);
@@ -19,7 +21,6 @@ class HomeScreenNotifier extends StateNotifier<HomePageState> {
   }
 }
 
-// state
 @immutable
 class HomePageState extends Equatable {
   final String? location;

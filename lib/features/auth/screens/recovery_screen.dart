@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ForgotPasswordScreen extends StatelessWidget {
-  const ForgotPasswordScreen({super.key});
+class RecoveryScreen extends StatelessWidget {
+  const RecoveryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -9,15 +9,9 @@ class ForgotPasswordScreen extends StatelessWidget {
       appBar: AppBar(title: const Text('Registration')),
       body: Center(
         child: Column(children: [
-          // name
-          const TextField(),
           // email
           const TextField(),
-          // password
-          const TextField(),
-          // re password
-          const TextField(),
-          // submit buttoon
+          // submit button
           OutlinedButton(
             onPressed: () {},
             child: const Text('Register'),

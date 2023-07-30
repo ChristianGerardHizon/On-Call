@@ -1,0 +1,27 @@
+name: core_package
+description: A new Flutter package project.
+version: 0.0.1
+homepage: "no homepage"
+publish_to: none
+
+environment:
+  sdk: ">=3.0.5 <4.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  equatable: ^2.0.5
+  flutter:
+    sdk: flutter
+  freezed_annotation: ^2.2.0
+  json_annotation: ^4.8.1
+  pocketbase: ^0.10.2
+
+dev_dependencies:
+  build_runner: ^2.4.5
+  flutter_lints: ^2.0.0
+  flutter_test:
+    sdk: flutter
+  freezed: ^2.3.5
+  json_serializable: ^6.7.0
+
+flutter: null
