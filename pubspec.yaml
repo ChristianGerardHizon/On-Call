@@ -19,7 +19,7 @@ dependencies:
   flutter_web_plugins:
     sdk: flutter
   go_router: ^10.0.0
-  login_package:
+  authentication_package:
     path: ./packages/authentication_package
   webview_flutter: ^4.2.2
 

@@ -8,14 +8,39 @@ import 'package:on_call/core/router/router.dart';
 import '../../features/common/screens/screens.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
+  List<RouteBase> routes = [
+    GoRoute(
+      path: '/login',
+      builder: (context, state) => const Center(
+        child: Text('Admin Analytics'),
+      ),
+    ),
+    GoRoute(
+      path: '/recovery',
+      builder: (context, state) => const Center(
+        child: Text('Admin Analytics'),
+      ),
+    ),
+    GoRoute(
+      path: '/register',
+      builder: (context, state) => const Center(
+        child: Text('Admin Analytics'),
+      ),
+    ),
+  ];
+
+  final type = ref.read(authProvider).type;
+  final isAuthenticated = ref.read(authProvider).isAuthenticated;
+
+  if (isAuthenticated && type == AuthType.admin) {
+    routes = [...routes, ...adminRoutes];
+  }
+
   return GoRouter(
-    redirect: (context, state) => globalRedirect(context, state, ref),
-    routes: [
-      ...adminRoutes,
-      ...customerRoutes,
-      ...authRoutes,
-      ...serviceOrderRoutes,
-    ],
+    redirect: (context, state) {
+      return globalRedirect(context, state, ref);
+    },
+    routes: routes,
     errorBuilder: (context, state) => const NotFoundScreen(),
   );
 });
@@ -35,7 +60,7 @@ globalRedirect(
   }
 
   if (fullPath == '' || type == AuthType.admin) {
-    return '/admin';
+    return '/';
   }
 
   return null;
