@@ -9,6 +9,8 @@ environment:
   sdk: ">=3.0.6 <4.0.0"
 
 dependencies:
+  authentication_package:
+    path: ./packages/authentication_package
   core_package:
     path: ./packages/core_package
   cupertino_icons: ^1.0.2
@@ -19,8 +21,7 @@ dependencies:
   flutter_web_plugins:
     sdk: flutter
   go_router: ^10.0.0
-  authentication_package:
-    path: ./packages/authentication_package
+  pocketbase: ^0.11.0
   webview_flutter: ^4.2.2
 
 dev_dependencies:
