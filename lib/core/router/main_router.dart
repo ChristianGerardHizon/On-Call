@@ -1,7 +1,7 @@
+import 'package:core_package/entities/entities.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:on_call/core/enums/enums.dart';
 import 'package:on_call/core/providers/auth/auth.dart';
 import 'package:on_call/core/router/router.dart';
 
@@ -11,18 +11,17 @@ final routerProvider = Provider<GoRouter>((ref) {
   List<RouteBase> routes = [...baseRoutes];
   String baseRoute = '/';
 
-  final type = ref.read(authProvider).type;
-  final isAuthenticated = ref.read(authProvider).isAuthenticated;
+  final type = ref.read(authProvider).user?.type;
 
-  if (isAuthenticated && type == AuthType.admin) {
+  if (type != null && type == UserType.admin) {
     routes = [...routes, ...adminRoutes];
   }
 
-  if (isAuthenticated && type == AuthType.customer) {
+  if (type != null && type == UserType.customer) {
     routes = [...routes, ...customerRoutes];
   }
 
-  if (isAuthenticated && type == AuthType.serviceProvider) {
+  if (type != null && type == UserType.serviceProvider) {
     routes = [...routes, ...spRoutes];
   }
 
@@ -41,18 +40,16 @@ globalRedirect(
   GoRouterState state,
   ProviderRef<GoRouter> ref,
 ) {
-  final isAuth = ref.read(authProvider).isAuthenticated;
+  final user = ref.read(authProvider).user;
   final type = ref.read(authProvider).type;
   final fullPath = state.fullPath ?? '';
   final authPaths = [];
-  if (authPaths.contains(state.fullPath) && isAuth == false) {
+  if (authPaths.contains(state.fullPath) && user == null) {
     final currentPath = Uri.encodeQueryComponent(fullPath);
     return '/login?returnURL=$currentPath';
   }
 
-  print({type: type});
-
-  if (fullPath == '' || type == AuthType.admin) {
+  if (fullPath == '' || type == UserType.admin) {
     return '/admin';
   }
 

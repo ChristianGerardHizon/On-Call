@@ -1,21 +1,23 @@
+import 'package:core_package/entities/entities.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:on_call/core/enums/enums.dart';
 
 @immutable
 class AuthState extends Equatable {
-  final bool isAuthenticated;
-  final AuthType? type;
+  final User? user;
+  final String? token;
 
-  const AuthState({this.isAuthenticated = false, required this.type});
+  const AuthState({this.token, this.user});
 
-  AuthState copyWith({bool? isAuthenticated, AuthType? type}) {
+  UserType? get type => user?.type;
+
+  AuthState copyWith({String? token, User? user}) {
     return AuthState(
-      isAuthenticated: isAuthenticated ?? this.isAuthenticated,
-      type: type ?? this.type,
+      user: user ?? this.user,
+      token: token ?? this.token,
     );
   }
 
   @override
-  List<Object?> get props => [isAuthenticated, type];
+  List<Object?> get props => [token, token];
 }

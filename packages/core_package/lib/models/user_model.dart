@@ -13,6 +13,7 @@ class UserModel with _$UserModel {
     required String username,
     required bool emailVisibility,
     required bool verified,
+    required String type,
   }) = _UserModel;
   const UserModel._();
 
@@ -21,14 +22,21 @@ class UserModel with _$UserModel {
 
   User toEntity(String id, Collection collection) {
     return User(
-      avatar: avatar,
-      email: email,
-      emailVisibility: emailVisibility,
-      id: id,
-      name: name,
-      username: username,
-      verified: verified,
-      collection: collection,
+        avatar: avatar,
+        email: email,
+        emailVisibility: emailVisibility,
+        id: id,
+        name: name,
+        username: username,
+        verified: verified,
+        collection: collection,
+        type: _toUserType(type));
+  }
+
+  UserType _toUserType(String str) {
+    return UserType.values.firstWhere(
+      (enumValue) => enumValue.toString().split('.').last == str,
+      orElse: () => throw Error(),
     );
   }
 }

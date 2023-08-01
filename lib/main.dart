@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:authentication_package/authentication_package.dart';
 import 'package:core_package/core_package.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +9,10 @@ import 'package:pocketbase/pocketbase.dart';
 
 import 'core/router/router.dart';
 
-final pb = PocketBase('');
+var server =
+    Platform.isAndroid ? 'http://10.0.2.2:8090/' : 'http://127.0.0.1:8090/';
+
+final pb = PocketBase(server);
 final coreRepo = CoreRepository(pb);
 final authRepo = AuthDataRepository(coreRepo);
 

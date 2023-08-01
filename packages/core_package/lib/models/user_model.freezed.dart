@@ -26,6 +26,7 @@ mixin _$UserModel {
   String get username => throw _privateConstructorUsedError;
   bool get emailVisibility => throw _privateConstructorUsedError;
   bool get verified => throw _privateConstructorUsedError;
+  String get type => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,7 +45,8 @@ abstract class $UserModelCopyWith<$Res> {
       String name,
       String username,
       bool emailVisibility,
-      bool verified});
+      bool verified,
+      String type});
 }
 
 /// @nodoc
@@ -66,6 +68,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? username = null,
     Object? emailVisibility = null,
     Object? verified = null,
+    Object? type = null,
   }) {
     return _then(_value.copyWith(
       avatar: null == avatar
@@ -92,6 +95,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.verified
           : verified // ignore: cast_nullable_to_non_nullable
               as bool,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -109,7 +116,8 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       String name,
       String username,
       bool emailVisibility,
-      bool verified});
+      bool verified,
+      String type});
 }
 
 /// @nodoc
@@ -129,6 +137,7 @@ class __$$_UserModelCopyWithImpl<$Res>
     Object? username = null,
     Object? emailVisibility = null,
     Object? verified = null,
+    Object? type = null,
   }) {
     return _then(_$_UserModel(
       avatar: null == avatar
@@ -155,6 +164,10 @@ class __$$_UserModelCopyWithImpl<$Res>
           ? _value.verified
           : verified // ignore: cast_nullable_to_non_nullable
               as bool,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -168,7 +181,8 @@ class _$_UserModel extends _UserModel {
       required this.name,
       required this.username,
       required this.emailVisibility,
-      required this.verified})
+      required this.verified,
+      required this.type})
       : super._();
 
   factory _$_UserModel.fromJson(Map<String, dynamic> json) =>
@@ -186,10 +200,12 @@ class _$_UserModel extends _UserModel {
   final bool emailVisibility;
   @override
   final bool verified;
+  @override
+  final String type;
 
   @override
   String toString() {
-    return 'UserModel(avatar: $avatar, email: $email, name: $name, username: $username, emailVisibility: $emailVisibility, verified: $verified)';
+    return 'UserModel(avatar: $avatar, email: $email, name: $name, username: $username, emailVisibility: $emailVisibility, verified: $verified, type: $type)';
   }
 
   @override
@@ -205,13 +221,14 @@ class _$_UserModel extends _UserModel {
             (identical(other.emailVisibility, emailVisibility) ||
                 other.emailVisibility == emailVisibility) &&
             (identical(other.verified, verified) ||
-                other.verified == verified));
+                other.verified == verified) &&
+            (identical(other.type, type) || other.type == type));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, avatar, email, name, username, emailVisibility, verified);
+  int get hashCode => Object.hash(runtimeType, avatar, email, name, username,
+      emailVisibility, verified, type);
 
   @JsonKey(ignore: true)
   @override
@@ -234,7 +251,8 @@ abstract class _UserModel extends UserModel {
       required final String name,
       required final String username,
       required final bool emailVisibility,
-      required final bool verified}) = _$_UserModel;
+      required final bool verified,
+      required final String type}) = _$_UserModel;
   const _UserModel._() : super._();
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
@@ -252,6 +270,8 @@ abstract class _UserModel extends UserModel {
   bool get emailVisibility;
   @override
   bool get verified;
+  @override
+  String get type;
   @override
   @JsonKey(ignore: true)
   _$$_UserModelCopyWith<_$_UserModel> get copyWith =>

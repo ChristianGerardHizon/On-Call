@@ -9,6 +9,7 @@ class User extends Equatable {
   final String username;
   final bool emailVisibility;
   final bool verified;
+  final UserType type;
 
   final Collection collection;
 
@@ -21,6 +22,7 @@ class User extends Equatable {
     required this.username,
     required this.emailVisibility,
     required this.verified,
+    required this.type,
   });
 
   @override
@@ -34,4 +36,10 @@ class User extends Equatable {
         verified,
         collection,
       ];
+}
+
+enum UserType {
+  admin,
+  customer,
+  serviceProvider,
 }
