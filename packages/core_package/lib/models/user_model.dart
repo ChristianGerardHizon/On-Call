@@ -12,7 +12,7 @@ class UserModel with _$UserModel {
     required String name,
     required String username,
     required bool emailVisibility,
-    required bool verified,
+    required bool isActive,
     required String type,
   }) = _UserModel;
   const UserModel._();
@@ -28,7 +28,7 @@ class UserModel with _$UserModel {
         id: id,
         name: name,
         username: username,
-        verified: verified,
+        isActive: isActive,
         collection: collection,
         type: _toUserType(type));
   }

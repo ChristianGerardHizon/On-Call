@@ -3,14 +3,18 @@ import 'package:flutter/material.dart';
 
 @immutable
 class AppState extends Equatable {
-  final ThemeData theme;
+  final ThemeData? theme;
+  final bool initialized;
 
-  const AppState({required this.theme});
+  const AppState({required this.theme, required this.initialized});
 
-  AppState copyWith({ThemeData? theme}) {
-    return AppState(theme: theme ?? this.theme);
+  AppState copyWith({ThemeData? theme, bool? initialized}) {
+    return AppState(
+      theme: theme ?? this.theme,
+      initialized: initialized ?? this.initialized,
+    );
   }
 
   @override
-  List<Object?> get props => [theme];
+  List<Object?> get props => [theme, initialized];
 }

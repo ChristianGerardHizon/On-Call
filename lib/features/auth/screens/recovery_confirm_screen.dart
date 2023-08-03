@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class RecoveryScreen extends StatelessWidget {
-  const RecoveryScreen({super.key});
+class RecoveryConfirmScreen extends StatelessWidget {
+  const RecoveryConfirmScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Registration')),
+      appBar: AppBar(title: const Text('Recovery Confirm')),
       body: Center(
         child: Column(children: [
           // email

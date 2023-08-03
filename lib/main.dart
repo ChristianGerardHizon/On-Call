@@ -1,5 +1,5 @@
-import 'dart:io';
-
+import 'dart:io' show Platform;
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:authentication_package/authentication_package.dart';
 import 'package:core_package/core_package.dart';
 import 'package:flutter/material.dart';
@@ -9,10 +9,22 @@ import 'package:pocketbase/pocketbase.dart';
 
 import 'core/router/router.dart';
 
-var server =
-    Platform.isAndroid ? 'http://10.0.2.2:8090/' : 'http://127.0.0.1:8090/';
+genRoute() {
+  if (kIsWeb) {
+    return 'http://127.0.0.1:8090/';
+  }
 
-final pb = PocketBase(server);
+  if (Platform.isAndroid) {
+    return 'http://10.0.2.2:8090/';
+  }
+  if (Platform.isIOS) {
+    return 'http://10.0.2.2:8090/';
+  }
+
+  return 'http://127.0.0.1:8090/';
+}
+
+final pb = PocketBase(genRoute());
 final coreRepo = CoreRepository(pb);
 final authRepo = AuthDataRepository(coreRepo);
 

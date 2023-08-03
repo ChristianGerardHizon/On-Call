@@ -14,6 +14,7 @@ dependencies:
   core_package:
     path: ./packages/core_package
   cupertino_icons: ^1.0.2
+  email_validator: ^2.1.17
   equatable: ^2.0.5
   flutter:
     sdk: flutter

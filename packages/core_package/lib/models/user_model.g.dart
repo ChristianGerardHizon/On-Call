@@ -12,7 +12,7 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
       name: json['name'] as String,
       username: json['username'] as String,
       emailVisibility: json['emailVisibility'] as bool,
-      verified: json['verified'] as bool,
+      isActive: json['isActive'] as bool,
       type: json['type'] as String,
     );
 
@@ -23,6 +23,6 @@ Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
       'name': instance.name,
       'username': instance.username,
       'emailVisibility': instance.emailVisibility,
-      'verified': instance.verified,
+      'isActive': instance.isActive,
       'type': instance.type,
     };

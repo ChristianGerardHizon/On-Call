@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:authentication_package/authentication_package.dart';
 import 'package:core_package/entities/entities.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -22,14 +24,26 @@ class AuthNotifier extends StateNotifier<AuthState> {
   /// Returns:
   ///   - If the user is authenticated, it returns the [User] object representing the authenticated user.
   ///   - If the user is not authenticated or an error occurs during the retrieval process, it returns null.
-  Future<User?> getAuth() async {
-    final result = await _auth.getUser();
-    return result.fold((l) {
-      print({'getAuth Failed': l});
-      return null;
-    }, (r) {
-      print({'getAuth': r});
-      return r;
-    });
+  Future<User?> getAuth({Duration? delay}) async {
+    state = state.copyWith(isLoading: true);
+    await Future.delayed(delay ?? const Duration());
+    final successOrFail = await _auth.getUser(useNetwork: true);
+    return successOrFail.fold(
+      (l) {
+        log('getAuth Failed', error: l);
+        return null;
+      },
+      (r) {
+        final token = _auth.getToken();
+        state = AuthState(user: r, token: token, isLoading: false);
+        return r;
+      },
+    );
+  }
+
+  Future<void> clearAuth() async {
+    state = state.copyWith(isLoading: true);
+    await _auth.signOut();
+    state = const AuthState(user: null, token: null, isLoading: false);
   }
 }

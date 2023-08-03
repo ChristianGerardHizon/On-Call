@@ -8,7 +8,7 @@ class User extends Equatable {
   final String name;
   final String username;
   final bool emailVisibility;
-  final bool verified;
+  final bool isActive;
   final UserType type;
 
   final Collection collection;
@@ -21,7 +21,7 @@ class User extends Equatable {
     required this.name,
     required this.username,
     required this.emailVisibility,
-    required this.verified,
+    required this.isActive,
     required this.type,
   });
 
@@ -33,7 +33,7 @@ class User extends Equatable {
         name,
         username,
         emailVisibility,
-        verified,
+        isActive,
         collection,
       ];
 }

@@ -25,7 +25,7 @@ mixin _$UserModel {
   String get name => throw _privateConstructorUsedError;
   String get username => throw _privateConstructorUsedError;
   bool get emailVisibility => throw _privateConstructorUsedError;
-  bool get verified => throw _privateConstructorUsedError;
+  bool get isActive => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -45,7 +45,7 @@ abstract class $UserModelCopyWith<$Res> {
       String name,
       String username,
       bool emailVisibility,
-      bool verified,
+      bool isActive,
       String type});
 }
 
@@ -67,7 +67,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? name = null,
     Object? username = null,
     Object? emailVisibility = null,
-    Object? verified = null,
+    Object? isActive = null,
     Object? type = null,
   }) {
     return _then(_value.copyWith(
@@ -91,9 +91,9 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.emailVisibility
           : emailVisibility // ignore: cast_nullable_to_non_nullable
               as bool,
-      verified: null == verified
-          ? _value.verified
-          : verified // ignore: cast_nullable_to_non_nullable
+      isActive: null == isActive
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
               as bool,
       type: null == type
           ? _value.type
@@ -116,7 +116,7 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       String name,
       String username,
       bool emailVisibility,
-      bool verified,
+      bool isActive,
       String type});
 }
 
@@ -136,7 +136,7 @@ class __$$_UserModelCopyWithImpl<$Res>
     Object? name = null,
     Object? username = null,
     Object? emailVisibility = null,
-    Object? verified = null,
+    Object? isActive = null,
     Object? type = null,
   }) {
     return _then(_$_UserModel(
@@ -160,9 +160,9 @@ class __$$_UserModelCopyWithImpl<$Res>
           ? _value.emailVisibility
           : emailVisibility // ignore: cast_nullable_to_non_nullable
               as bool,
-      verified: null == verified
-          ? _value.verified
-          : verified // ignore: cast_nullable_to_non_nullable
+      isActive: null == isActive
+          ? _value.isActive
+          : isActive // ignore: cast_nullable_to_non_nullable
               as bool,
       type: null == type
           ? _value.type
@@ -181,7 +181,7 @@ class _$_UserModel extends _UserModel {
       required this.name,
       required this.username,
       required this.emailVisibility,
-      required this.verified,
+      required this.isActive,
       required this.type})
       : super._();
 
@@ -199,13 +199,13 @@ class _$_UserModel extends _UserModel {
   @override
   final bool emailVisibility;
   @override
-  final bool verified;
+  final bool isActive;
   @override
   final String type;
 
   @override
   String toString() {
-    return 'UserModel(avatar: $avatar, email: $email, name: $name, username: $username, emailVisibility: $emailVisibility, verified: $verified, type: $type)';
+    return 'UserModel(avatar: $avatar, email: $email, name: $name, username: $username, emailVisibility: $emailVisibility, isActive: $isActive, type: $type)';
   }
 
   @override
@@ -220,15 +220,15 @@ class _$_UserModel extends _UserModel {
                 other.username == username) &&
             (identical(other.emailVisibility, emailVisibility) ||
                 other.emailVisibility == emailVisibility) &&
-            (identical(other.verified, verified) ||
-                other.verified == verified) &&
+            (identical(other.isActive, isActive) ||
+                other.isActive == isActive) &&
             (identical(other.type, type) || other.type == type));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, avatar, email, name, username,
-      emailVisibility, verified, type);
+      emailVisibility, isActive, type);
 
   @JsonKey(ignore: true)
   @override
@@ -251,7 +251,7 @@ abstract class _UserModel extends UserModel {
       required final String name,
       required final String username,
       required final bool emailVisibility,
-      required final bool verified,
+      required final bool isActive,
       required final String type}) = _$_UserModel;
   const _UserModel._() : super._();
 
@@ -269,7 +269,7 @@ abstract class _UserModel extends UserModel {
   @override
   bool get emailVisibility;
   @override
-  bool get verified;
+  bool get isActive;
   @override
   String get type;
   @override
