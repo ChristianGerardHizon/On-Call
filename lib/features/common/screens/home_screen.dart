@@ -35,38 +35,36 @@ class HomeScreen extends ConsumerWidget {
           title: const Text('Home Page'),
         ),
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const TextField(
-                decoration: InputDecoration(
-                  hintText: 'Enter your username',
-                ),
-              ),
-              const SizedBox(height: 20),
-              const TextField(
-                decoration: InputDecoration(
-                  hintText: 'Enter your password',
-                ),
-              ),
-              const SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      router.go('/login');
-                    },
-                    child: const Text('Login'),
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Enter your city',
                   ),
-                  const SizedBox(width: 40),
-                  ElevatedButton(
-                    onPressed: toRefresh,
-                    child: const Text('Search'),
+                ),
+                const SizedBox(height: 20),
+                const TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Enter Service',
                   ),
-                ],
-              )
-            ],
+                ),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: toRefresh,
+                  child: const Text('Search'),
+                ),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () {
+                    router.go('/login');
+                  },
+                  child: const Text('Login'),
+                )
+              ],
+            ),
           ),
         ),
       );

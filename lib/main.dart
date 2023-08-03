@@ -5,6 +5,7 @@ import 'package:core_package/core_package.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:pocketbase/pocketbase.dart';
 
 import 'core/router/router.dart';
@@ -40,6 +41,10 @@ class Application extends ConsumerWidget {
     final router = ref.watch(routerProvider);
 
     return MaterialApp.router(
+      theme: Theme.of(context).copyWith(
+        textTheme: GoogleFonts.openSansTextTheme(),
+      ),
+      debugShowCheckedModeBanner: false,
       title: 'OnCall',
       routerConfig: router,
     );
