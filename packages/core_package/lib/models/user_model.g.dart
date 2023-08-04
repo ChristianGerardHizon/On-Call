@@ -9,10 +9,11 @@ part of 'user_model.dart';
 _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
       avatar: json['avatar'] as String,
       email: json['email'] as String,
-      name: json['name'] as String,
+      firstName: json['first_name'] as String,
+      lastName: json['last_name'] as String,
       username: json['username'] as String,
-      emailVisibility: json['emailVisibility'] as bool,
       isActive: json['isActive'] as bool,
+      verified: json['verified'] as bool,
       type: json['type'] as String,
     );
 
@@ -20,9 +21,10 @@ Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
     <String, dynamic>{
       'avatar': instance.avatar,
       'email': instance.email,
-      'name': instance.name,
+      'first_name': instance.firstName,
+      'last_name': instance.lastName,
       'username': instance.username,
-      'emailVisibility': instance.emailVisibility,
       'isActive': instance.isActive,
+      'verified': instance.verified,
       'type': instance.type,
     };

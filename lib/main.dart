@@ -10,23 +10,18 @@ import 'package:pocketbase/pocketbase.dart';
 
 import 'core/router/router.dart';
 
-genRoute() {
-  if (kIsWeb) {
-    return 'http://127.0.0.1:8090/';
-  }
-
-  if (Platform.isAndroid) {
-    return 'http://10.0.2.2:8090/';
-  }
-  if (Platform.isIOS) {
-    return 'http://10.0.2.2:8090/';
-  }
-
-  return 'http://127.0.0.1:8090/';
-}
-
-final pb = PocketBase(genRoute());
-final coreRepo = CoreRepository(pb);
+final pb = PocketBase('https://vocal-mutt-widely.ngrok-free.app');
+const config = PBCollections(
+  users: '_pb_users_auth_',
+  serviceOrders: 'ukk2h1jos3ikuj5',
+  serviceProviders: 'j1qxxjwp8eq6pqx',
+  serviceProviderServices: 'kdruhc60eq1n3v1',
+  services: 'u03zwnntnk69f5i',
+  publicServiceProviders: 'j6a1tfsouqssz42',
+  publicServices: 'ba9faocjzh2hbl4',
+  adminServiceProviders: '2n2in6zz0u8g0wa',
+);
+final coreRepo = CoreRepository(pb, config);
 final authRepo = AuthDataRepository(coreRepo);
 
 void main() {

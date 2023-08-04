@@ -9,10 +9,11 @@ class UserModel with _$UserModel {
   const factory UserModel({
     required String avatar,
     required String email,
-    required String name,
+    @JsonKey(name: 'first_name') required String firstName,
+    @JsonKey(name: 'last_name') required String lastName,
     required String username,
-    required bool emailVisibility,
     required bool isActive,
+    required bool verified,
     required String type,
   }) = _UserModel;
   const UserModel._();
@@ -22,11 +23,12 @@ class UserModel with _$UserModel {
 
   User toEntity(String id, Collection collection) {
     return User(
+        verified: verified,
         avatar: avatar,
         email: email,
-        emailVisibility: emailVisibility,
         id: id,
-        name: name,
+        firstName: firstName,
+        lastName: lastName,
         username: username,
         isActive: isActive,
         collection: collection,

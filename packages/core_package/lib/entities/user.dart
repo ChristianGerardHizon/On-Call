@@ -5,9 +5,10 @@ class User extends Equatable {
   final String avatar;
   final String id;
   final String email;
-  final String name;
+  final String firstName;
+  final String lastName;
   final String username;
-  final bool emailVisibility;
+  final bool verified;
   final bool isActive;
   final UserType type;
 
@@ -18,9 +19,10 @@ class User extends Equatable {
     required this.avatar,
     required this.id,
     required this.email,
-    required this.name,
+    required this.firstName,
+    required this.lastName,
     required this.username,
-    required this.emailVisibility,
+    required this.verified,
     required this.isActive,
     required this.type,
   });
@@ -30,9 +32,10 @@ class User extends Equatable {
         id,
         avatar,
         email,
-        name,
+        firstName,
+        lastName,
         username,
-        emailVisibility,
+        verified,
         isActive,
         collection,
       ];

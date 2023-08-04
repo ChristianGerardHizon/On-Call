@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:core_package/entities/entities.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -8,7 +11,9 @@ import 'package:on_call/core/router/router.dart';
 import '../../features/common/screens/screens.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
-  List<RouteBase> routes = [...baseRoutes, ...customerRoutes];
+  final adminRoutes = buildAdminRoutes(ref);
+
+  List<RouteBase> routes = [...baseRoutes, ...customerRoutes, ...adminRoutes];
   String initialRoute = '/splash';
   return GoRouter(
     redirect: (context, state) {
@@ -29,7 +34,7 @@ globalRedirect(
   final type = ref.read(authProvider).type;
   final isInitialized = ref.read(appProvider).initialized;
   final fullPath = state.fullPath ?? '';
-  final authPaths = [];
+  final segments = state.uri.pathSegments;
 
   if (fullPath == '/logout') {
     return null;
@@ -43,8 +48,10 @@ globalRedirect(
     return '/pending';
   }
 
-  if (fullPath == '/login' && user != null) {
-    return '/login?isl=true';
+  if (user != null &&
+      !segments.contains('admin') &&
+      user.type == UserType.admin) {
+    return '/admin';
   }
 
   return null;
