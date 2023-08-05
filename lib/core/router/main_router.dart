@@ -1,6 +1,4 @@
-import 'dart:developer';
-
-import 'package:core_package/entities/entities.dart';
+import 'package:core_package/core_package.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -10,12 +8,14 @@ import 'package:on_call/core/router/router.dart';
 
 import '../../features/common/screens/screens.dart';
 
+final rootNavigatorKey = GlobalKey<NavigatorState>();
 final routerProvider = Provider<GoRouter>((ref) {
   final adminRoutes = buildAdminRoutes(ref);
 
   List<RouteBase> routes = [...baseRoutes, ...customerRoutes, ...adminRoutes];
   String initialRoute = '/splash';
   return GoRouter(
+    navigatorKey: rootNavigatorKey,
     redirect: (context, state) {
       return globalRedirect(context, state, ref);
     },
@@ -31,7 +31,7 @@ globalRedirect(
   ProviderRef<GoRouter> ref,
 ) {
   final user = ref.read(authProvider).user;
-  final type = ref.read(authProvider).type;
+  // final type = ref.read(authProvider).type;
   final isInitialized = ref.read(appProvider).initialized;
   final fullPath = state.fullPath ?? '';
   final segments = state.uri.pathSegments;

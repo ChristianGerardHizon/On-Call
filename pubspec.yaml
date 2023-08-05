@@ -9,6 +9,8 @@ environment:
   sdk: ">=3.0.6 <4.0.0"
 
 dependencies:
+  admin_package:
+    path: ./packages/admin_package
   authentication_package:
     path: ./packages/authentication_package
   core_package:
@@ -23,6 +25,7 @@ dependencies:
     sdk: flutter
   go_router: ^10.0.0
   google_fonts: ^5.1.0
+  icons_flutter: ^0.0.4
   pocketbase: ^0.12.0
   webview_flutter: ^4.2.2
 

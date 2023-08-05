@@ -13,7 +13,7 @@ final loginProvider =
 
 class LoginScreenNotifier extends StateNotifier<LoginScreenState> {
   LoginScreenNotifier(this.repo) : super(const LoginScreenState());
-  final AuthRepository repo;
+  final AuthDesignRepository repo;
 
   String? validateEmail() {
     final value = state.email;

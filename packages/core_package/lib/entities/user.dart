@@ -40,9 +40,3 @@ class User extends Equatable {
         collection,
       ];
 }
-
-enum UserType {
-  admin,
-  customer,
-  serviceProvider,
-}

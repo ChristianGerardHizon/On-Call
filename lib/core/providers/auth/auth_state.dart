@@ -1,4 +1,4 @@
-import 'package:core_package/entities/entities.dart';
+import 'package:core_package/core_package.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 

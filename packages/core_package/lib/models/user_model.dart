@@ -1,5 +1,7 @@
-import 'package:core_package/entities/entities.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../entities/entities.dart';
+import '../enums/enums.dart';
 
 part 'user_model.freezed.dart';
 part 'user_model.g.dart';
@@ -7,38 +9,52 @@ part 'user_model.g.dart';
 @freezed
 class UserModel with _$UserModel {
   const factory UserModel({
-    required String avatar,
-    required String email,
-    @JsonKey(name: 'first_name') required String firstName,
-    @JsonKey(name: 'last_name') required String lastName,
-    required String username,
-    required bool isActive,
-    required bool verified,
-    required String type,
+    required String token,
+    required UserDataModel record,
+    required Map<String, dynamic> meta,
   }) = _UserModel;
-  const UserModel._();
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);
+}
 
-  User toEntity(String id, Collection collection) {
+@freezed
+class UserDataModel with _$UserDataModel {
+  factory UserDataModel({
+    required String id,
+    required String created,
+    required String updated,
+    required String collectionId,
+    required String collectionName,
+    required Map<String, dynamic> expand,
+    required String avatar,
+    required String email,
+    required bool emailVisibility,
+    required String firstName,
+    required bool isActive,
+    required String lastName,
+    required UserType type,
+    required String username,
+    required bool verified,
+  }) = _UserDataModel;
+
+  const UserDataModel._();
+
+  User toEntity() {
     return User(
-        verified: verified,
-        avatar: avatar,
-        email: email,
-        id: id,
-        firstName: firstName,
-        lastName: lastName,
-        username: username,
-        isActive: isActive,
-        collection: collection,
-        type: _toUserType(type));
-  }
-
-  UserType _toUserType(String str) {
-    return UserType.values.firstWhere(
-      (enumValue) => enumValue.toString().split('.').last == str,
-      orElse: () => throw Error(),
+      verified: verified,
+      avatar: avatar,
+      email: email,
+      id: id,
+      firstName: firstName,
+      lastName: lastName,
+      username: username,
+      isActive: isActive,
+      collection: Collection(id: collectionId, name: collectionName),
+      type: type,
     );
   }
+
+  factory UserDataModel.fromJson(Map<String, dynamic> json) =>
+      _$UserDataModelFromJson(json);
 }

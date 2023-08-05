@@ -1,4 +1,6 @@
+import 'dart:developer';
 import 'dart:io' show Platform;
+import 'package:admin_package/admin_package.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:authentication_package/authentication_package.dart';
 import 'package:core_package/core_package.dart';
@@ -10,7 +12,14 @@ import 'package:pocketbase/pocketbase.dart';
 
 import 'core/router/router.dart';
 
-final pb = PocketBase('https://vocal-mutt-widely.ngrok-free.app');
+String getServer() {
+  if (kIsWeb) {
+    return 'http://localhost:8000';
+  }
+  return 'https://vocal-mutt-widely.ngrok-free.app';
+}
+
+final pb = PocketBase(getServer());
 const config = PBCollections(
   users: '_pb_users_auth_',
   serviceOrders: 'ukk2h1jos3ikuj5',
@@ -19,12 +28,13 @@ const config = PBCollections(
   services: 'u03zwnntnk69f5i',
   publicServiceProviders: 'j6a1tfsouqssz42',
   publicServices: 'ba9faocjzh2hbl4',
-  adminServiceProviders: '2n2in6zz0u8g0wa',
+  adminServiceProviders: 'j1qxxjwp8eq6pqx',
 );
 final coreRepo = CoreRepository(pb, config);
-final authRepo = AuthDataRepository(coreRepo);
+final authRepo = AuthRepository(coreRepo);
+final adminRepo = AdminRepository(coreRepo);
 
-void main() {
+Future<void> main() async {
   usePathUrlStrategy();
   runApp(const ProviderScope(child: Application()));
 }
