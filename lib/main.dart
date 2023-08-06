@@ -1,5 +1,3 @@
-import 'dart:developer';
-import 'dart:io' show Platform;
 import 'package:admin_package/admin_package.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:authentication_package/authentication_package.dart';
@@ -12,27 +10,32 @@ import 'package:pocketbase/pocketbase.dart';
 
 import 'core/router/router.dart';
 
-String getServer() {
-  if (kIsWeb) {
-    return 'http://localhost:8000';
+final coreRepoProvider = Provider((ref) {
+  String getServer() {
+    if (kIsWeb) {
+      return 'http://localhost:8000';
+    }
+    return 'https://vocal-mutt-widely.ngrok-free.app';
   }
-  return 'https://vocal-mutt-widely.ngrok-free.app';
-}
 
-final pb = PocketBase(getServer());
-const config = PBCollections(
-  users: '_pb_users_auth_',
-  serviceOrders: 'ukk2h1jos3ikuj5',
-  serviceProviders: 'j1qxxjwp8eq6pqx',
-  serviceProviderServices: 'kdruhc60eq1n3v1',
-  services: 'u03zwnntnk69f5i',
-  publicServiceProviders: 'j6a1tfsouqssz42',
-  publicServices: 'ba9faocjzh2hbl4',
-  adminServiceProviders: 'j1qxxjwp8eq6pqx',
-);
-final coreRepo = CoreRepository(pb, config);
-final authRepo = AuthRepository(coreRepo);
-final adminRepo = AdminRepository(coreRepo);
+  final pb = PocketBase(getServer());
+  const config = PBCollections(
+    users: '_pb_users_auth_',
+    serviceOrders: 'ukk2h1jos3ikuj5',
+    serviceProviders: 'j1qxxjwp8eq6pqx',
+    serviceProviderServices: 'kdruhc60eq1n3v1',
+    services: 'u03zwnntnk69f5i',
+    publicServiceProviders: 'j6a1tfsouqssz42',
+    publicServices: 'ba9faocjzh2hbl4',
+    adminServiceProviders: 'j1qxxjwp8eq6pqx',
+    serviceProviderUsers: 'is89td0q4na01bn',
+  );
+  return CoreRepository(pb, config);
+});
+final authRepoProvider =
+    Provider((ref) => AuthRepository(ref.read(coreRepoProvider)));
+final adminRepoProvider =
+    Provider((ref) => AdminRepository(ref.read(coreRepoProvider)));
 
 Future<void> main() async {
   usePathUrlStrategy();
@@ -46,12 +49,24 @@ class Application extends ConsumerWidget {
     final router = ref.watch(routerProvider);
 
     return MaterialApp.router(
-      theme: Theme.of(context).copyWith(
-        textTheme: GoogleFonts.openSansTextTheme(),
-      ),
       debugShowCheckedModeBanner: false,
       title: 'OnCall',
       routerConfig: router,
+      theme: Theme.of(context).copyWith(
+        useMaterial3: true,
+        appBarTheme: AppBarTheme.of(context).copyWith(
+          centerTitle: true,
+          iconTheme: const IconThemeData(color: Colors.black),
+          backgroundColor: Colors.white,
+          titleTextStyle: GoogleFonts.openSans(
+            color: Colors.black,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+          elevation: 0,
+        ),
+        textTheme: GoogleFonts.openSansTextTheme(Typography.blackCupertino),
+      ),
     );
   }
 }

@@ -8,7 +8,7 @@ import 'login_screen_state.dart';
 final loginProvider =
     StateNotifierProvider.autoDispose<LoginScreenNotifier, LoginScreenState>(
         (ref) {
-  return LoginScreenNotifier(authRepo);
+  return LoginScreenNotifier(ref.read(authRepoProvider));
 });
 
 class LoginScreenNotifier extends StateNotifier<LoginScreenState> {
@@ -47,23 +47,23 @@ class LoginScreenNotifier extends StateNotifier<LoginScreenState> {
 
   // login
   Future<void> login() async {
-    state = state.copyWith(isLoading: true);
+    state = state.copyWith(isLoading: true, error: null);
 
     final email = state.email;
     final password = state.password;
 
     if (email == null || password == null) {
-      state = state.copyWith(isLoading: false, error: 'inputs are null');
+      state = state.copyWith(isLoading: false, error: 'Inputs are invalid');
       return;
     }
 
     if (validateEmail() != null) {
-      state = state.copyWith(isLoading: false, error: 'invalid email');
+      state = state.copyWith(isLoading: false, error: 'Invalid email');
       return;
     }
 
     if (validatePassword() != null) {
-      state = state.copyWith(isLoading: false, error: 'invalid password');
+      state = state.copyWith(isLoading: false, error: 'Invalid password');
       return;
     }
 
@@ -71,7 +71,11 @@ class LoginScreenNotifier extends StateNotifier<LoginScreenState> {
 
     result.fold((l) {
       print({'login Error': l});
-      state = state.copyWith(isLoading: false, error: 'Login Failed');
+      state = state.copyWith(
+        isLoading: false,
+        error: 'Login Failed',
+        isSuccess: false,
+      );
     }, (r) {
       print({'success': r});
       state = state.copyWith(isLoading: false, isSuccess: true);

@@ -1,14 +1,12 @@
-import 'dart:developer';
-
 import 'package:authentication_package/authentication_package.dart';
-import 'package:core_package/entities/entities.dart';
+import 'package:core_package/core_package.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:on_call/core/providers/providers.dart';
 
 import '../../../main.dart';
 
 final authProvider = StateNotifierProvider<AuthNotifier, AuthState>((ref) {
-  return AuthNotifier(authRepo);
+  return AuthNotifier(ref.watch(authRepoProvider));
 });
 
 class AuthNotifier extends StateNotifier<AuthState> {
@@ -30,7 +28,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
     final successOrFail = await _auth.getUser(useNetwork: true);
     return successOrFail.fold(
       (l) {
-        log('getAuth Failed', error: l);
+        flog.e('getAuth Failed', error: l);
         return null;
       },
       (r) {

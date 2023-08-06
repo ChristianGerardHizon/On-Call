@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:icons_flutter/icons_flutter.dart';
+import 'package:on_call/features/admin/screens/admin_dashboard_screen.dart';
+import 'package:on_call/features/admin/screens/screens.dart';
 
 /// Builds the "shell" for the app by building a Scaffold with a
 /// BottomNavigationBar, where [child] is placed in the body of the Scaffold.
@@ -27,14 +30,22 @@ class AdminBaseScreen extends StatelessWidget {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             label: '',
-            icon: Icon(Icons.dashboard_rounded),
+            tooltip: 'Dashboard',
+            icon: Icon(FontAwesome.home),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.business),
+            icon: Icon(FontAwesome.support),
+            label: '',
+            tooltip: 'Support',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(MaterialCommunityIcons.hard_hat, size: 40),
+            tooltip: 'Service Providers',
             label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            tooltip: 'Profile',
+            icon: Icon(MaterialCommunityIcons.account),
             label: '',
           ),
         ],
@@ -44,16 +55,20 @@ class AdminBaseScreen extends StatelessWidget {
     );
   }
 
-  static int _calculateSelectedIndex(BuildContext context) {
+  int _calculateSelectedIndex(BuildContext context) {
     final String location = GoRouterState.of(context).uri.toString();
-    if (location.startsWith('/admin/a')) {
-      return 0;
-    }
-    if (location.startsWith('/admin/b')) {
+
+    if (location.startsWith(AdminSupportScreen.route)) {
       return 1;
     }
-    if (location.startsWith('/admin/c')) {
+    if (location.startsWith(AdminSPListScreen.route)) {
       return 2;
+    }
+    if (location.startsWith(AdminProfileScreen.route)) {
+      return 3;
+    }
+    if (location.startsWith(AdminDashboardScreen.route)) {
+      return 0;
     }
     return 0;
   }
@@ -61,13 +76,18 @@ class AdminBaseScreen extends StatelessWidget {
   void _onItemTapped(int index, BuildContext context) {
     switch (index) {
       case 0:
-        GoRouter.of(context).go('/admin/a');
+        GoRouter.of(context).go(
+          AdminDashboardScreen.route,
+        );
         break;
       case 1:
-        GoRouter.of(context).go('/admin/b');
+        GoRouter.of(context).go(AdminSupportScreen.route);
         break;
       case 2:
-        GoRouter.of(context).go('/admin/c');
+        GoRouter.of(context).go(AdminSPListScreen.route);
+        break;
+      case 3:
+        GoRouter.of(context).go(AdminProfileScreen.route);
         break;
     }
   }

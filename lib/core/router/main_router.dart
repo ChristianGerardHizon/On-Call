@@ -16,9 +16,7 @@ final routerProvider = Provider<GoRouter>((ref) {
   String initialRoute = '/splash';
   return GoRouter(
     navigatorKey: rootNavigatorKey,
-    redirect: (context, state) {
-      return globalRedirect(context, state, ref);
-    },
+    redirect: (context, state) => globalRedirect(context, state, ref),
     initialLocation: initialRoute,
     routes: routes,
     errorBuilder: (context, state) => const NotFoundScreen(),
@@ -35,6 +33,8 @@ globalRedirect(
   final isInitialized = ref.read(appProvider).initialized;
   final fullPath = state.fullPath ?? '';
   final segments = state.uri.pathSegments;
+  final isLoggedIn = user != null;
+  final isAdmin = user?.type == UserType.admin;
 
   if (fullPath == '/logout') {
     return null;
@@ -44,13 +44,11 @@ globalRedirect(
     return '/splash';
   }
 
-  if (user != null && user.isActive == false) {
+  if (isLoggedIn && user.isActive == false) {
     return '/pending';
   }
 
-  if (user != null &&
-      !segments.contains('admin') &&
-      user.type == UserType.admin) {
+  if (isLoggedIn && !segments.contains('admin') && isAdmin) {
     return '/admin';
   }
 

@@ -15,7 +15,7 @@
 ### Service Provider Create Screen
 
     - allows the admin to create a `inactive` service provider
-    - manage the subscription of a sp
+    - manage the subscription of a service provider
 
 ### Service Provider Screen
 

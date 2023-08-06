@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AdminAnalyticsScreen extends StatelessWidget {
+  static const String route = '/admin/analytics';
+
   const AdminAnalyticsScreen({super.key});
 
   @override

@@ -19,4 +19,7 @@ class CoreRepository {
 
   RecordService get adminServiceProvidersCol =>
       server.collection(config.adminServiceProviders);
+
+  RecordService get spUsersCol =>
+      server.collection(config.serviceProviderUsers);
 }

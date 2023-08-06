@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AdminProfileScreen extends StatelessWidget {
+  static const String route = '/admin/profile';
   const AdminProfileScreen({super.key});
 
   @override

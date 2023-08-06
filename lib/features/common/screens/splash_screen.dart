@@ -10,9 +10,9 @@ class SplashScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final router = GoRouter.of(context);
+    final appProd = ref.read(appProvider.notifier);
     final authProd = ref.read(authProvider.notifier);
     final appState = ref.watch(appProvider);
-    final appProd = ref.read(appProvider.notifier);
 
     if (appState.initialized) {
       WidgetsBinding.instance.addPostFrameCallback((_) {

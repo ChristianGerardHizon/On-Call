@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:on_call/features/auth/provider/login/login_provider.dart';
+import 'package:on_call/features/auth/providers/login/login_provider.dart';
+import 'package:on_call/features/auth/widgets/error_message.dart';
 
 import '../../../core/providers/providers.dart';
 
@@ -35,10 +36,15 @@ class LoginScreen extends ConsumerWidget {
       });
     }
 
+    Future login() async {
+      await loginState.login();
+      authNotifier.getAuth();
+    }
+
     return Scaffold(
       appBar: AppBar(title: const Text('Login')),
       body: Visibility(
-          visible: state.isLoading,
+          visible: state.isLoading || state.isSuccess,
           maintainState: false,
           maintainAnimation: false,
           replacement: Padding(
@@ -46,10 +52,18 @@ class LoginScreen extends ConsumerWidget {
             child: Center(
               child: Column(children: [
                 // error message
-                if (error != null) Text(error),
+                if (error != null)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: SizedBox(
+                      width: double.maxFinite,
+                      child: ErrorMessage(message: error),
+                    ),
+                  ),
 
                 // text inputs
                 TextFormField(
+                  onFieldSubmitted: (value) => login(),
                   initialValue: state.email,
                   onChanged: (value) => loginState.updateEmail(value),
                   decoration: const InputDecoration(labelText: 'Email'),
@@ -57,6 +71,7 @@ class LoginScreen extends ConsumerWidget {
                 ),
                 const SizedBox(height: 16),
                 TextFormField(
+                  onFieldSubmitted: (value) => login(),
                   initialValue: state.password,
                   onChanged: (value) => loginState.updatePassword(value),
                   decoration: const InputDecoration(labelText: 'Password'),
@@ -67,15 +82,25 @@ class LoginScreen extends ConsumerWidget {
 
                 // login button
                 SizedBox(
-                    height: 40,
-                    width: double.maxFinite,
-                    child: ElevatedButton(
-                      onPressed: () async {
-                        await loginState.login();
-                        authNotifier.getAuth();
-                      },
-                      child: const Text('Login'),
-                    )),
+                  height: 40,
+                  width: double.maxFinite,
+                  child: ElevatedButton(
+                    onPressed: login,
+                    child: const Text('Login'),
+                  ),
+                ),
+
+                SizedBox(height: 20),
+
+                SizedBox(
+                  height: 40,
+                  child: TextButton(
+                    onPressed: () {
+                      router.go('/');
+                    },
+                    child: const Text('Back'),
+                  ),
+                ),
               ]),
             ),
           ),

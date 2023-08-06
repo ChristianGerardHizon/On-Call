@@ -16,8 +16,10 @@ dependencies:
   core_package:
     path: ./packages/core_package
   cupertino_icons: ^1.0.2
+  dartx: ^1.2.0
   email_validator: ^2.1.17
   equatable: ^2.0.5
+  fl_chart: ^0.63.0
   flutter:
     sdk: flutter
   flutter_riverpod: ^2.3.6
@@ -30,6 +32,7 @@ dependencies:
   webview_flutter: ^4.2.2
 
 dev_dependencies:
+  build_runner: null
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
