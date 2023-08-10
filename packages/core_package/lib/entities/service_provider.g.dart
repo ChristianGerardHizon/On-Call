@@ -14,7 +14,7 @@ _$_ServiceProvider _$$_ServiceProviderFromJson(Map<String, dynamic> json) =>
       userRef: json['userRef'] as String,
       publicPicture: json['publicPicture'] as String?,
       publicName: json['publicName'] as String,
-      isPublic: json['isPublic'] as bool,
+      isPublic: JsonParser.boolFromJson(json['isPublic']),
       created: DateTime.parse(json['created'] as String),
       updated: DateTime.parse(json['updated'] as String),
     );

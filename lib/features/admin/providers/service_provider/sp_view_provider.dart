@@ -4,13 +4,14 @@ import 'package:core_package/core_package.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:on_call/main.dart';
 
-final spViewIdProvider = StateProvider<String?>((ref) => null);
-final spViewProvider =
-    AsyncNotifierProvider<ServiceProviderViewNotifier, ServiceProviderUser?>(
+final spViewIdProvider = StateProvider.autoDispose<String?>((ref) => null);
+final spViewProvider = AsyncNotifierProvider.autoDispose<
+    ServiceProviderViewNotifier, ServiceProviderUser?>(
   () => ServiceProviderViewNotifier(),
 );
 
-class ServiceProviderViewNotifier extends AsyncNotifier<ServiceProviderUser?> {
+class ServiceProviderViewNotifier
+    extends AutoDisposeAsyncNotifier<ServiceProviderUser?> {
   ServiceProviderViewNotifier();
   @override
   FutureOr<ServiceProviderUser?> build() async {
@@ -35,7 +36,7 @@ class ServiceProviderViewNotifier extends AsyncNotifier<ServiceProviderUser?> {
     final repo = ref.read(adminRepoProvider);
     final successOrFail = await repo.getServiceProviderUser(id);
     return successOrFail.fold(
-      (l) => throw l,
+      (l) => Future.error(l),
       (r) => r,
     );
   }

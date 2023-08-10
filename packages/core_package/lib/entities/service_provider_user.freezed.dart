@@ -36,11 +36,11 @@ mixin _$ServiceProviderUser {
   String get publicPicture => throw _privateConstructorUsedError;
   @JsonKey(name: 'email')
   String get email => throw _privateConstructorUsedError;
-  @JsonKey(name: 'isPublic')
+  @JsonKey(name: 'isPublic', fromJson: JsonParser.boolFromJson)
   bool get isPublic => throw _privateConstructorUsedError;
-  @JsonKey(name: 'isActive')
+  @JsonKey(name: 'isActive', fromJson: JsonParser.boolFromJson)
   bool get isActive => throw _privateConstructorUsedError;
-  @JsonKey(name: 'emailVisibility')
+  @JsonKey(name: 'emailVisibility', fromJson: JsonParser.boolFromJson)
   bool get emailVisibility => throw _privateConstructorUsedError;
   @JsonKey(name: 'firstName')
   String get firstName => throw _privateConstructorUsedError;
@@ -64,21 +64,36 @@ abstract class $ServiceProviderUserCopyWith<$Res> {
       _$ServiceProviderUserCopyWithImpl<$Res, ServiceProviderUser>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'id') String id,
-      @JsonKey(name: 'collectionId') String collectionId,
-      @JsonKey(name: 'collectionName') String collectionName,
-      @JsonKey(name: 'userRef') String userRef,
-      @JsonKey(name: 'avatar') String avatar,
-      @JsonKey(name: 'publicName') String publicName,
-      @JsonKey(name: 'publicPicture') String publicPicture,
-      @JsonKey(name: 'email') String email,
-      @JsonKey(name: 'isPublic') bool isPublic,
-      @JsonKey(name: 'isActive') bool isActive,
-      @JsonKey(name: 'emailVisibility') bool emailVisibility,
-      @JsonKey(name: 'firstName') String firstName,
-      @JsonKey(name: 'lastName') String lastName,
-      @JsonKey(name: 'created') DateTime created,
-      @JsonKey(name: 'updated') DateTime updated});
+      {@JsonKey(name: 'id')
+          String id,
+      @JsonKey(name: 'collectionId')
+          String collectionId,
+      @JsonKey(name: 'collectionName')
+          String collectionName,
+      @JsonKey(name: 'userRef')
+          String userRef,
+      @JsonKey(name: 'avatar')
+          String avatar,
+      @JsonKey(name: 'publicName')
+          String publicName,
+      @JsonKey(name: 'publicPicture')
+          String publicPicture,
+      @JsonKey(name: 'email')
+          String email,
+      @JsonKey(name: 'isPublic', fromJson: JsonParser.boolFromJson)
+          bool isPublic,
+      @JsonKey(name: 'isActive', fromJson: JsonParser.boolFromJson)
+          bool isActive,
+      @JsonKey(name: 'emailVisibility', fromJson: JsonParser.boolFromJson)
+          bool emailVisibility,
+      @JsonKey(name: 'firstName')
+          String firstName,
+      @JsonKey(name: 'lastName')
+          String lastName,
+      @JsonKey(name: 'created')
+          DateTime created,
+      @JsonKey(name: 'updated')
+          DateTime updated});
 }
 
 /// @nodoc
@@ -184,21 +199,36 @@ abstract class _$$_ServiceProviderUserCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'id') String id,
-      @JsonKey(name: 'collectionId') String collectionId,
-      @JsonKey(name: 'collectionName') String collectionName,
-      @JsonKey(name: 'userRef') String userRef,
-      @JsonKey(name: 'avatar') String avatar,
-      @JsonKey(name: 'publicName') String publicName,
-      @JsonKey(name: 'publicPicture') String publicPicture,
-      @JsonKey(name: 'email') String email,
-      @JsonKey(name: 'isPublic') bool isPublic,
-      @JsonKey(name: 'isActive') bool isActive,
-      @JsonKey(name: 'emailVisibility') bool emailVisibility,
-      @JsonKey(name: 'firstName') String firstName,
-      @JsonKey(name: 'lastName') String lastName,
-      @JsonKey(name: 'created') DateTime created,
-      @JsonKey(name: 'updated') DateTime updated});
+      {@JsonKey(name: 'id')
+          String id,
+      @JsonKey(name: 'collectionId')
+          String collectionId,
+      @JsonKey(name: 'collectionName')
+          String collectionName,
+      @JsonKey(name: 'userRef')
+          String userRef,
+      @JsonKey(name: 'avatar')
+          String avatar,
+      @JsonKey(name: 'publicName')
+          String publicName,
+      @JsonKey(name: 'publicPicture')
+          String publicPicture,
+      @JsonKey(name: 'email')
+          String email,
+      @JsonKey(name: 'isPublic', fromJson: JsonParser.boolFromJson)
+          bool isPublic,
+      @JsonKey(name: 'isActive', fromJson: JsonParser.boolFromJson)
+          bool isActive,
+      @JsonKey(name: 'emailVisibility', fromJson: JsonParser.boolFromJson)
+          bool emailVisibility,
+      @JsonKey(name: 'firstName')
+          String firstName,
+      @JsonKey(name: 'lastName')
+          String lastName,
+      @JsonKey(name: 'created')
+          DateTime created,
+      @JsonKey(name: 'updated')
+          DateTime updated});
 }
 
 /// @nodoc
@@ -297,21 +327,36 @@ class __$$_ServiceProviderUserCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ServiceProviderUser extends _ServiceProviderUser {
   const _$_ServiceProviderUser(
-      {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'collectionId') required this.collectionId,
-      @JsonKey(name: 'collectionName') required this.collectionName,
-      @JsonKey(name: 'userRef') required this.userRef,
-      @JsonKey(name: 'avatar') required this.avatar,
-      @JsonKey(name: 'publicName') required this.publicName,
-      @JsonKey(name: 'publicPicture') required this.publicPicture,
-      @JsonKey(name: 'email') required this.email,
-      @JsonKey(name: 'isPublic') required this.isPublic,
-      @JsonKey(name: 'isActive') required this.isActive,
-      @JsonKey(name: 'emailVisibility') required this.emailVisibility,
-      @JsonKey(name: 'firstName') required this.firstName,
-      @JsonKey(name: 'lastName') required this.lastName,
-      @JsonKey(name: 'created') required this.created,
-      @JsonKey(name: 'updated') required this.updated})
+      {@JsonKey(name: 'id')
+          required this.id,
+      @JsonKey(name: 'collectionId')
+          required this.collectionId,
+      @JsonKey(name: 'collectionName')
+          required this.collectionName,
+      @JsonKey(name: 'userRef')
+          required this.userRef,
+      @JsonKey(name: 'avatar')
+          required this.avatar,
+      @JsonKey(name: 'publicName')
+          required this.publicName,
+      @JsonKey(name: 'publicPicture')
+          required this.publicPicture,
+      @JsonKey(name: 'email')
+          required this.email,
+      @JsonKey(name: 'isPublic', fromJson: JsonParser.boolFromJson)
+          required this.isPublic,
+      @JsonKey(name: 'isActive', fromJson: JsonParser.boolFromJson)
+          required this.isActive,
+      @JsonKey(name: 'emailVisibility', fromJson: JsonParser.boolFromJson)
+          required this.emailVisibility,
+      @JsonKey(name: 'firstName')
+          required this.firstName,
+      @JsonKey(name: 'lastName')
+          required this.lastName,
+      @JsonKey(name: 'created')
+          required this.created,
+      @JsonKey(name: 'updated')
+          required this.updated})
       : super._();
 
   factory _$_ServiceProviderUser.fromJson(Map<String, dynamic> json) =>
@@ -342,13 +387,13 @@ class _$_ServiceProviderUser extends _ServiceProviderUser {
   @JsonKey(name: 'email')
   final String email;
   @override
-  @JsonKey(name: 'isPublic')
+  @JsonKey(name: 'isPublic', fromJson: JsonParser.boolFromJson)
   final bool isPublic;
   @override
-  @JsonKey(name: 'isActive')
+  @JsonKey(name: 'isActive', fromJson: JsonParser.boolFromJson)
   final bool isActive;
   @override
-  @JsonKey(name: 'emailVisibility')
+  @JsonKey(name: 'emailVisibility', fromJson: JsonParser.boolFromJson)
   final bool emailVisibility;
   @override
   @JsonKey(name: 'firstName')
@@ -436,22 +481,36 @@ class _$_ServiceProviderUser extends _ServiceProviderUser {
 
 abstract class _ServiceProviderUser extends ServiceProviderUser {
   const factory _ServiceProviderUser(
-          {@JsonKey(name: 'id') required final String id,
-          @JsonKey(name: 'collectionId') required final String collectionId,
-          @JsonKey(name: 'collectionName') required final String collectionName,
-          @JsonKey(name: 'userRef') required final String userRef,
-          @JsonKey(name: 'avatar') required final String avatar,
-          @JsonKey(name: 'publicName') required final String publicName,
-          @JsonKey(name: 'publicPicture') required final String publicPicture,
-          @JsonKey(name: 'email') required final String email,
-          @JsonKey(name: 'isPublic') required final bool isPublic,
-          @JsonKey(name: 'isActive') required final bool isActive,
-          @JsonKey(name: 'emailVisibility') required final bool emailVisibility,
-          @JsonKey(name: 'firstName') required final String firstName,
-          @JsonKey(name: 'lastName') required final String lastName,
-          @JsonKey(name: 'created') required final DateTime created,
-          @JsonKey(name: 'updated') required final DateTime updated}) =
-      _$_ServiceProviderUser;
+      {@JsonKey(name: 'id')
+          required final String id,
+      @JsonKey(name: 'collectionId')
+          required final String collectionId,
+      @JsonKey(name: 'collectionName')
+          required final String collectionName,
+      @JsonKey(name: 'userRef')
+          required final String userRef,
+      @JsonKey(name: 'avatar')
+          required final String avatar,
+      @JsonKey(name: 'publicName')
+          required final String publicName,
+      @JsonKey(name: 'publicPicture')
+          required final String publicPicture,
+      @JsonKey(name: 'email')
+          required final String email,
+      @JsonKey(name: 'isPublic', fromJson: JsonParser.boolFromJson)
+          required final bool isPublic,
+      @JsonKey(name: 'isActive', fromJson: JsonParser.boolFromJson)
+          required final bool isActive,
+      @JsonKey(name: 'emailVisibility', fromJson: JsonParser.boolFromJson)
+          required final bool emailVisibility,
+      @JsonKey(name: 'firstName')
+          required final String firstName,
+      @JsonKey(name: 'lastName')
+          required final String lastName,
+      @JsonKey(name: 'created')
+          required final DateTime created,
+      @JsonKey(name: 'updated')
+          required final DateTime updated}) = _$_ServiceProviderUser;
   const _ServiceProviderUser._() : super._();
 
   factory _ServiceProviderUser.fromJson(Map<String, dynamic> json) =
@@ -482,13 +541,13 @@ abstract class _ServiceProviderUser extends ServiceProviderUser {
   @JsonKey(name: 'email')
   String get email;
   @override
-  @JsonKey(name: 'isPublic')
+  @JsonKey(name: 'isPublic', fromJson: JsonParser.boolFromJson)
   bool get isPublic;
   @override
-  @JsonKey(name: 'isActive')
+  @JsonKey(name: 'isActive', fromJson: JsonParser.boolFromJson)
   bool get isActive;
   @override
-  @JsonKey(name: 'emailVisibility')
+  @JsonKey(name: 'emailVisibility', fromJson: JsonParser.boolFromJson)
   bool get emailVisibility;
   @override
   @JsonKey(name: 'firstName')

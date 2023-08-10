@@ -9,8 +9,11 @@ List<RouteBase> buildAdminRoutes(ProviderRef<GoRouter> ref) {
   return [
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
-      builder: (context, state, child) {
-        return AdminBaseScreen(child: child);
+      pageBuilder: (context, state, child) {
+        return NoTransitionPage(
+          key: state.pageKey,
+          child: AdminBaseScreen(child: child),
+        );
       },
       routes: [
         GoRoute(
@@ -32,6 +35,12 @@ List<RouteBase> buildAdminRoutes(ProviderRef<GoRouter> ref) {
           },
         ),
         GoRoute(
+          path: AdminServiceListScreen.route,
+          pageBuilder: (context, state) {
+            return const NoTransitionPage(child: AdminServiceListScreen());
+          },
+        ),
+        GoRoute(
           path: AdminProfileScreen.route,
           pageBuilder: (context, state) {
             return const NoTransitionPage(child: AdminProfileScreen());
@@ -39,6 +48,8 @@ List<RouteBase> buildAdminRoutes(ProviderRef<GoRouter> ref) {
         ),
       ],
     ),
+
+    // service providers
     GoRoute(
       path: AdminSPCreateScreen.route,
       pageBuilder: (context, state) {
@@ -52,6 +63,24 @@ List<RouteBase> buildAdminRoutes(ProviderRef<GoRouter> ref) {
         final id = extra['id'] as String?;
 
         return NoTransitionPage(child: AdminSPViewScreen(id: id));
+      },
+    ),
+
+    // services
+    GoRoute(
+      path: AdminCreateServiceScreen.route,
+      pageBuilder: (context, state) {
+        return const NoTransitionPage(child: AdminCreateServiceScreen());
+      },
+    ),
+
+    GoRoute(
+      path: AdminServiceViewScreen.route,
+      pageBuilder: (context, state) {
+        final extra = state.extra as Map<String, dynamic>;
+        final id = extra['id'] as String?;
+
+        return NoTransitionPage(child: AdminServiceViewScreen(id: id));
       },
     ),
   ];

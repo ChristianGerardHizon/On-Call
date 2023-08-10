@@ -16,7 +16,7 @@ _$_CreateUserParams _$$_CreateUserParamsFromJson(Map<String, dynamic> json) =>
       firstName: json['firstName'] as String,
       lastName: json['lastName'] as String,
       type: $enumDecode(_$UserTypeEnumMap, json['type']),
-      isActive: json['isActive'] as bool,
+      isActive: JsonParser.boolFromJson(json['isActive']),
     );
 
 Map<String, dynamic> _$$_CreateUserParamsToJson(_$_CreateUserParams instance) =>
@@ -29,7 +29,7 @@ Map<String, dynamic> _$$_CreateUserParamsToJson(_$_CreateUserParams instance) =>
       'firstName': instance.firstName,
       'lastName': instance.lastName,
       'type': _$UserTypeEnumMap[instance.type]!,
-      'isActive': instance.isActive,
+      'isActive': JsonParser.boolToJson(instance.isActive),
     };
 
 const _$UserTypeEnumMap = {

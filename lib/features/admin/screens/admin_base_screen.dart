@@ -26,26 +26,35 @@ class AdminBaseScreen extends StatelessWidget {
         showSelectedLabels: false,
         selectedFontSize: 0,
         unselectedFontSize: 0,
-        iconSize: 30,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             label: '',
             tooltip: 'Dashboard',
-            icon: Icon(FontAwesome.home),
+            icon: Icon(FontAwesome.home, size: 30),
           ),
           BottomNavigationBarItem(
-            icon: Icon(FontAwesome.support),
+            icon: Icon(FontAwesome.support, size: 30),
             label: '',
             tooltip: 'Support',
           ),
           BottomNavigationBarItem(
-            icon: Icon(MaterialCommunityIcons.hard_hat, size: 40),
+            icon: Icon(
+              MaterialCommunityIcons.briefcase_outline,
+              size: 35,
+            ),
+            tooltip: 'Services',
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Padding(
+                padding: EdgeInsets.only(top: 3),
+                child: Icon(MaterialCommunityIcons.hard_hat, size: 40)),
             tooltip: 'Service Providers',
             label: '',
           ),
           BottomNavigationBarItem(
             tooltip: 'Profile',
-            icon: Icon(MaterialCommunityIcons.account),
+            icon: Icon(MaterialCommunityIcons.account, size: 30),
             label: '',
           ),
         ],
@@ -61,11 +70,14 @@ class AdminBaseScreen extends StatelessWidget {
     if (location.startsWith(AdminSupportScreen.route)) {
       return 1;
     }
-    if (location.startsWith(AdminSPListScreen.route)) {
+    if (location.startsWith(AdminServiceListScreen.route)) {
       return 2;
     }
-    if (location.startsWith(AdminProfileScreen.route)) {
+    if (location.startsWith(AdminSPListScreen.route)) {
       return 3;
+    }
+    if (location.startsWith(AdminProfileScreen.route)) {
+      return 4;
     }
     if (location.startsWith(AdminDashboardScreen.route)) {
       return 0;
@@ -76,17 +88,18 @@ class AdminBaseScreen extends StatelessWidget {
   void _onItemTapped(int index, BuildContext context) {
     switch (index) {
       case 0:
-        GoRouter.of(context).go(
-          AdminDashboardScreen.route,
-        );
+        GoRouter.of(context).go(AdminDashboardScreen.route);
         break;
       case 1:
         GoRouter.of(context).go(AdminSupportScreen.route);
         break;
       case 2:
-        GoRouter.of(context).go(AdminSPListScreen.route);
+        GoRouter.of(context).go(AdminServiceListScreen.route);
         break;
       case 3:
+        GoRouter.of(context).go(AdminSPListScreen.route);
+        break;
+      case 4:
         GoRouter.of(context).go(AdminProfileScreen.route);
         break;
     }

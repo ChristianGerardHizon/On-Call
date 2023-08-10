@@ -16,7 +16,12 @@ class CreateUserParams with _$CreateUserParams {
     @JsonKey(name: 'firstName') required String firstName,
     @JsonKey(name: 'lastName') required String lastName,
     @JsonKey(name: 'type') required UserType type,
-    @JsonKey(name: 'isActive') required bool isActive,
+    @JsonKey(
+      name: 'isActive',
+      fromJson: JsonParser.boolFromJson,
+      toJson: JsonParser.boolToJson,
+    )
+    required bool isActive,
   }) = _CreateUserParams;
 
   factory CreateUserParams.fromJson(Map<String, dynamic> json) =>

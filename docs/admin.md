@@ -6,7 +6,7 @@
 
 ### Dashboard Screen
 
-    -   display simple analytics for the mobile app.
+    - display simple analytics for the mobile app.
 
 ### Service Providers Screen
 

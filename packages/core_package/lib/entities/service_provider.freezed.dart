@@ -31,7 +31,7 @@ mixin _$ServiceProvider {
   String? get publicPicture => throw _privateConstructorUsedError;
   @JsonKey(name: 'publicName')
   String get publicName => throw _privateConstructorUsedError;
-  @JsonKey(name: 'isPublic')
+  @JsonKey(name: 'isPublic', fromJson: JsonParser.boolFromJson)
   bool get isPublic => throw _privateConstructorUsedError;
   @JsonKey(name: 'created')
   DateTime get created => throw _privateConstructorUsedError;
@@ -52,14 +52,22 @@ abstract class $ServiceProviderCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      @JsonKey(name: 'collectionId') String collectionId,
-      @JsonKey(name: 'collectionName') String collectionName,
-      @JsonKey(name: 'userRef') String userRef,
-      @JsonKey(name: 'publicPicture') String? publicPicture,
-      @JsonKey(name: 'publicName') String publicName,
-      @JsonKey(name: 'isPublic') bool isPublic,
-      @JsonKey(name: 'created') DateTime created,
-      @JsonKey(name: 'updated') DateTime updated});
+      @JsonKey(name: 'collectionId')
+          String collectionId,
+      @JsonKey(name: 'collectionName')
+          String collectionName,
+      @JsonKey(name: 'userRef')
+          String userRef,
+      @JsonKey(name: 'publicPicture')
+          String? publicPicture,
+      @JsonKey(name: 'publicName')
+          String publicName,
+      @JsonKey(name: 'isPublic', fromJson: JsonParser.boolFromJson)
+          bool isPublic,
+      @JsonKey(name: 'created')
+          DateTime created,
+      @JsonKey(name: 'updated')
+          DateTime updated});
 }
 
 /// @nodoc
@@ -136,14 +144,22 @@ abstract class _$$_ServiceProviderCopyWith<$Res>
   @useResult
   $Res call(
       {String id,
-      @JsonKey(name: 'collectionId') String collectionId,
-      @JsonKey(name: 'collectionName') String collectionName,
-      @JsonKey(name: 'userRef') String userRef,
-      @JsonKey(name: 'publicPicture') String? publicPicture,
-      @JsonKey(name: 'publicName') String publicName,
-      @JsonKey(name: 'isPublic') bool isPublic,
-      @JsonKey(name: 'created') DateTime created,
-      @JsonKey(name: 'updated') DateTime updated});
+      @JsonKey(name: 'collectionId')
+          String collectionId,
+      @JsonKey(name: 'collectionName')
+          String collectionName,
+      @JsonKey(name: 'userRef')
+          String userRef,
+      @JsonKey(name: 'publicPicture')
+          String? publicPicture,
+      @JsonKey(name: 'publicName')
+          String publicName,
+      @JsonKey(name: 'isPublic', fromJson: JsonParser.boolFromJson)
+          bool isPublic,
+      @JsonKey(name: 'created')
+          DateTime created,
+      @JsonKey(name: 'updated')
+          DateTime updated});
 }
 
 /// @nodoc
@@ -213,14 +229,22 @@ class __$$_ServiceProviderCopyWithImpl<$Res>
 class _$_ServiceProvider implements _ServiceProvider {
   const _$_ServiceProvider(
       {required this.id,
-      @JsonKey(name: 'collectionId') required this.collectionId,
-      @JsonKey(name: 'collectionName') required this.collectionName,
-      @JsonKey(name: 'userRef') required this.userRef,
-      @JsonKey(name: 'publicPicture') this.publicPicture,
-      @JsonKey(name: 'publicName') required this.publicName,
-      @JsonKey(name: 'isPublic') required this.isPublic,
-      @JsonKey(name: 'created') required this.created,
-      @JsonKey(name: 'updated') required this.updated});
+      @JsonKey(name: 'collectionId')
+          required this.collectionId,
+      @JsonKey(name: 'collectionName')
+          required this.collectionName,
+      @JsonKey(name: 'userRef')
+          required this.userRef,
+      @JsonKey(name: 'publicPicture')
+          this.publicPicture,
+      @JsonKey(name: 'publicName')
+          required this.publicName,
+      @JsonKey(name: 'isPublic', fromJson: JsonParser.boolFromJson)
+          required this.isPublic,
+      @JsonKey(name: 'created')
+          required this.created,
+      @JsonKey(name: 'updated')
+          required this.updated});
 
   factory _$_ServiceProvider.fromJson(Map<String, dynamic> json) =>
       _$$_ServiceProviderFromJson(json);
@@ -243,7 +267,7 @@ class _$_ServiceProvider implements _ServiceProvider {
   @JsonKey(name: 'publicName')
   final String publicName;
   @override
-  @JsonKey(name: 'isPublic')
+  @JsonKey(name: 'isPublic', fromJson: JsonParser.boolFromJson)
   final bool isPublic;
   @override
   @JsonKey(name: 'created')
@@ -299,16 +323,23 @@ class _$_ServiceProvider implements _ServiceProvider {
 
 abstract class _ServiceProvider implements ServiceProvider {
   const factory _ServiceProvider(
-          {required final String id,
-          @JsonKey(name: 'collectionId') required final String collectionId,
-          @JsonKey(name: 'collectionName') required final String collectionName,
-          @JsonKey(name: 'userRef') required final String userRef,
-          @JsonKey(name: 'publicPicture') final String? publicPicture,
-          @JsonKey(name: 'publicName') required final String publicName,
-          @JsonKey(name: 'isPublic') required final bool isPublic,
-          @JsonKey(name: 'created') required final DateTime created,
-          @JsonKey(name: 'updated') required final DateTime updated}) =
-      _$_ServiceProvider;
+      {required final String id,
+      @JsonKey(name: 'collectionId')
+          required final String collectionId,
+      @JsonKey(name: 'collectionName')
+          required final String collectionName,
+      @JsonKey(name: 'userRef')
+          required final String userRef,
+      @JsonKey(name: 'publicPicture')
+          final String? publicPicture,
+      @JsonKey(name: 'publicName')
+          required final String publicName,
+      @JsonKey(name: 'isPublic', fromJson: JsonParser.boolFromJson)
+          required final bool isPublic,
+      @JsonKey(name: 'created')
+          required final DateTime created,
+      @JsonKey(name: 'updated')
+          required final DateTime updated}) = _$_ServiceProvider;
 
   factory _ServiceProvider.fromJson(Map<String, dynamic> json) =
       _$_ServiceProvider.fromJson;
@@ -331,7 +362,7 @@ abstract class _ServiceProvider implements ServiceProvider {
   @JsonKey(name: 'publicName')
   String get publicName;
   @override
-  @JsonKey(name: 'isPublic')
+  @JsonKey(name: 'isPublic', fromJson: JsonParser.boolFromJson)
   bool get isPublic;
   @override
   @JsonKey(name: 'created')

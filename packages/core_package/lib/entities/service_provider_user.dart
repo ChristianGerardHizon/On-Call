@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-
-import 'entities.dart';
+import '../core_package.dart';
 
 part 'service_provider_user.freezed.dart';
 part 'service_provider_user.g.dart';
@@ -16,9 +15,21 @@ class ServiceProviderUser with _$ServiceProviderUser {
     @JsonKey(name: 'publicName') required String publicName,
     @JsonKey(name: 'publicPicture') required String publicPicture,
     @JsonKey(name: 'email') required String email,
-    @JsonKey(name: 'isPublic') required bool isPublic,
-    @JsonKey(name: 'isActive') required bool isActive,
-    @JsonKey(name: 'emailVisibility') required bool emailVisibility,
+    @JsonKey(
+      name: 'isPublic',
+      fromJson: JsonParser.boolFromJson,
+    )
+    required bool isPublic,
+    @JsonKey(
+      name: 'isActive',
+      fromJson: JsonParser.boolFromJson,
+    )
+    required bool isActive,
+    @JsonKey(
+      name: 'emailVisibility',
+      fromJson: JsonParser.boolFromJson,
+    )
+    required bool emailVisibility,
     @JsonKey(name: 'firstName') required String firstName,
     @JsonKey(name: 'lastName') required String lastName,
     @JsonKey(name: 'created') required DateTime created,

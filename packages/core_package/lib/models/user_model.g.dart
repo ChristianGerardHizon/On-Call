@@ -29,13 +29,13 @@ _$_UserDataModel _$$_UserDataModelFromJson(Map<String, dynamic> json) =>
       expand: json['expand'] as Map<String, dynamic>,
       avatar: json['avatar'] as String,
       email: json['email'] as String,
-      emailVisibility: json['emailVisibility'] as bool,
+      emailVisibility: JsonParser.boolFromJson(json['emailVisibility']),
       firstName: json['firstName'] as String,
-      isActive: json['isActive'] as bool,
+      isActive: JsonParser.boolFromJson(json['isActive']),
       lastName: json['lastName'] as String,
       type: $enumDecode(_$UserTypeEnumMap, json['type']),
       username: json['username'] as String,
-      verified: json['verified'] as bool,
+      verified: JsonParser.boolFromJson(json['verified']),
     );
 
 Map<String, dynamic> _$$_UserDataModelToJson(_$_UserDataModel instance) =>
@@ -48,13 +48,13 @@ Map<String, dynamic> _$$_UserDataModelToJson(_$_UserDataModel instance) =>
       'expand': instance.expand,
       'avatar': instance.avatar,
       'email': instance.email,
-      'emailVisibility': instance.emailVisibility,
+      'emailVisibility': JsonParser.boolToJson(instance.emailVisibility),
       'firstName': instance.firstName,
-      'isActive': instance.isActive,
+      'isActive': JsonParser.boolToJson(instance.isActive),
       'lastName': instance.lastName,
       'type': _$UserTypeEnumMap[instance.type]!,
       'username': instance.username,
-      'verified': instance.verified,
+      'verified': JsonParser.boolToJson(instance.verified),
     };
 
 const _$UserTypeEnumMap = {

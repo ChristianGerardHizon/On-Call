@@ -36,7 +36,10 @@ mixin _$CreateUserParams {
   String get lastName => throw _privateConstructorUsedError;
   @JsonKey(name: 'type')
   UserType get type => throw _privateConstructorUsedError;
-  @JsonKey(name: 'isActive')
+  @JsonKey(
+      name: 'isActive',
+      fromJson: JsonParser.boolFromJson,
+      toJson: JsonParser.boolToJson)
   bool get isActive => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -52,15 +55,24 @@ abstract class $CreateUserParamsCopyWith<$Res> {
       _$CreateUserParamsCopyWithImpl<$Res, CreateUserParams>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'username') String username,
-      @JsonKey(name: 'email') String email,
-      @JsonKey(name: 'emailVisibility') bool emailVisibility,
-      @JsonKey(name: 'password') String password,
-      @JsonKey(name: 'passwordConfirm') String passwordConfirm,
-      @JsonKey(name: 'firstName') String firstName,
-      @JsonKey(name: 'lastName') String lastName,
-      @JsonKey(name: 'type') UserType type,
-      @JsonKey(name: 'isActive') bool isActive});
+      {@JsonKey(name: 'username')
+          String username,
+      @JsonKey(name: 'email')
+          String email,
+      @JsonKey(name: 'emailVisibility')
+          bool emailVisibility,
+      @JsonKey(name: 'password')
+          String password,
+      @JsonKey(name: 'passwordConfirm')
+          String passwordConfirm,
+      @JsonKey(name: 'firstName')
+          String firstName,
+      @JsonKey(name: 'lastName')
+          String lastName,
+      @JsonKey(name: 'type')
+          UserType type,
+      @JsonKey(name: 'isActive', fromJson: JsonParser.boolFromJson, toJson: JsonParser.boolToJson)
+          bool isActive});
 }
 
 /// @nodoc
@@ -136,15 +148,24 @@ abstract class _$$_CreateUserParamsCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'username') String username,
-      @JsonKey(name: 'email') String email,
-      @JsonKey(name: 'emailVisibility') bool emailVisibility,
-      @JsonKey(name: 'password') String password,
-      @JsonKey(name: 'passwordConfirm') String passwordConfirm,
-      @JsonKey(name: 'firstName') String firstName,
-      @JsonKey(name: 'lastName') String lastName,
-      @JsonKey(name: 'type') UserType type,
-      @JsonKey(name: 'isActive') bool isActive});
+      {@JsonKey(name: 'username')
+          String username,
+      @JsonKey(name: 'email')
+          String email,
+      @JsonKey(name: 'emailVisibility')
+          bool emailVisibility,
+      @JsonKey(name: 'password')
+          String password,
+      @JsonKey(name: 'passwordConfirm')
+          String passwordConfirm,
+      @JsonKey(name: 'firstName')
+          String firstName,
+      @JsonKey(name: 'lastName')
+          String lastName,
+      @JsonKey(name: 'type')
+          UserType type,
+      @JsonKey(name: 'isActive', fromJson: JsonParser.boolFromJson, toJson: JsonParser.boolToJson)
+          bool isActive});
 }
 
 /// @nodoc
@@ -213,15 +234,24 @@ class __$$_CreateUserParamsCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_CreateUserParams implements _CreateUserParams {
   const _$_CreateUserParams(
-      {@JsonKey(name: 'username') required this.username,
-      @JsonKey(name: 'email') required this.email,
-      @JsonKey(name: 'emailVisibility') required this.emailVisibility,
-      @JsonKey(name: 'password') required this.password,
-      @JsonKey(name: 'passwordConfirm') required this.passwordConfirm,
-      @JsonKey(name: 'firstName') required this.firstName,
-      @JsonKey(name: 'lastName') required this.lastName,
-      @JsonKey(name: 'type') required this.type,
-      @JsonKey(name: 'isActive') required this.isActive});
+      {@JsonKey(name: 'username')
+          required this.username,
+      @JsonKey(name: 'email')
+          required this.email,
+      @JsonKey(name: 'emailVisibility')
+          required this.emailVisibility,
+      @JsonKey(name: 'password')
+          required this.password,
+      @JsonKey(name: 'passwordConfirm')
+          required this.passwordConfirm,
+      @JsonKey(name: 'firstName')
+          required this.firstName,
+      @JsonKey(name: 'lastName')
+          required this.lastName,
+      @JsonKey(name: 'type')
+          required this.type,
+      @JsonKey(name: 'isActive', fromJson: JsonParser.boolFromJson, toJson: JsonParser.boolToJson)
+          required this.isActive});
 
   factory _$_CreateUserParams.fromJson(Map<String, dynamic> json) =>
       _$$_CreateUserParamsFromJson(json);
@@ -251,7 +281,10 @@ class _$_CreateUserParams implements _CreateUserParams {
   @JsonKey(name: 'type')
   final UserType type;
   @override
-  @JsonKey(name: 'isActive')
+  @JsonKey(
+      name: 'isActive',
+      fromJson: JsonParser.boolFromJson,
+      toJson: JsonParser.boolToJson)
   final bool isActive;
 
   @override
@@ -319,7 +352,7 @@ abstract class _CreateUserParams implements CreateUserParams {
           required final String lastName,
       @JsonKey(name: 'type')
           required final UserType type,
-      @JsonKey(name: 'isActive')
+      @JsonKey(name: 'isActive', fromJson: JsonParser.boolFromJson, toJson: JsonParser.boolToJson)
           required final bool isActive}) = _$_CreateUserParams;
 
   factory _CreateUserParams.fromJson(Map<String, dynamic> json) =
@@ -350,7 +383,10 @@ abstract class _CreateUserParams implements CreateUserParams {
   @JsonKey(name: 'type')
   UserType get type;
   @override
-  @JsonKey(name: 'isActive')
+  @JsonKey(
+      name: 'isActive',
+      fromJson: JsonParser.boolFromJson,
+      toJson: JsonParser.boolToJson)
   bool get isActive;
   @override
   @JsonKey(ignore: true)

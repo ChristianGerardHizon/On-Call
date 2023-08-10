@@ -1,5 +1,4 @@
 import 'package:admin_package/admin_package.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:authentication_package/authentication_package.dart';
 import 'package:core_package/core_package.dart';
 import 'package:flutter/material.dart';
@@ -12,23 +11,21 @@ import 'core/router/router.dart';
 
 final coreRepoProvider = Provider((ref) {
   String getServer() {
-    if (kIsWeb) {
-      return 'http://localhost:8000';
-    }
-    return 'https://vocal-mutt-widely.ngrok-free.app';
+    // return 'http://127.0.0.1:8090/';
+    return 'https://dev-oncall.fly.dev/';
   }
 
   final pb = PocketBase(getServer());
   const config = PBCollections(
-    users: '_pb_users_auth_',
-    serviceOrders: 'ukk2h1jos3ikuj5',
-    serviceProviders: 'j1qxxjwp8eq6pqx',
-    serviceProviderServices: 'kdruhc60eq1n3v1',
-    services: 'u03zwnntnk69f5i',
-    publicServiceProviders: 'j6a1tfsouqssz42',
-    publicServices: 'ba9faocjzh2hbl4',
-    adminServiceProviders: 'j1qxxjwp8eq6pqx',
-    serviceProviderUsers: 'is89td0q4na01bn',
+    users: 'users',
+    serviceOrders: 'service_orders',
+    serviceProviders: 'service_providers',
+    serviceProviderServices: 'service_provider_services',
+    services: 'services',
+    publicServiceProviders: 'public_service_providers',
+    publicServices: 'pubic_services',
+    adminServiceProviders: 'admin_service_providers',
+    serviceProviderUsers: 'service_provider_user_details',
   );
   return CoreRepository(pb, config);
 });
@@ -53,7 +50,7 @@ class Application extends ConsumerWidget {
       title: 'OnCall',
       routerConfig: router,
       theme: Theme.of(context).copyWith(
-        useMaterial3: true,
+        useMaterial3: false,
         appBarTheme: AppBarTheme.of(context).copyWith(
           centerTitle: true,
           iconTheme: const IconThemeData(color: Colors.black),

@@ -1,15 +1,15 @@
-class PBRecord<T> {
-  PBRecord({
-    required this.page,
-    required this.perPage,
-    required this.totalPages,
-    required this.totalItems,
-    required this.items,
-  });
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  final int page;
-  final int perPage;
-  final int totalPages;
-  final int totalItems;
-  final T items;
+part 'pb_record.freezed.dart';
+
+@freezed
+class PBRecord<T> with _$PBRecord<T> {
+  const factory PBRecord({
+    required int page,
+    required int perPage,
+    required int totalPages,
+    required int totalItems,
+    required T items,
+    String? searchString,
+  }) = _PBRecord<T>;
 }

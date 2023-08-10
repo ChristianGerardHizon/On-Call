@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 import '../entities/entities.dart';
 import '../enums/enums.dart';
+import '../utils/utils.dart';
 
 part 'user_model.freezed.dart';
 part 'user_model.g.dart';
@@ -9,9 +9,9 @@ part 'user_model.g.dart';
 @freezed
 class UserModel with _$UserModel {
   const factory UserModel({
-    required String token,
-    required UserDataModel record,
-    required Map<String, dynamic> meta,
+    @JsonKey(name: 'token') required String token,
+    @JsonKey(name: 'record') required UserDataModel record,
+    @JsonKey(name: 'meta') required Map<String, dynamic> meta,
   }) = _UserModel;
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>
@@ -21,20 +21,32 @@ class UserModel with _$UserModel {
 @freezed
 class UserDataModel with _$UserDataModel {
   factory UserDataModel({
-    required String id,
-    required String created,
-    required String updated,
-    required String collectionId,
-    required String collectionName,
-    required Map<String, dynamic> expand,
-    required String avatar,
-    required String email,
+    @JsonKey(name: 'id') required String id,
+    @JsonKey(name: 'created') required String created,
+    @JsonKey(name: 'updated') required String updated,
+    @JsonKey(name: 'collectionId') required String collectionId,
+    @JsonKey(name: 'collectionName') required String collectionName,
+    @JsonKey(name: 'expand') required Map<String, dynamic> expand,
+    @JsonKey(name: 'avatar') required String avatar,
+    @JsonKey(name: 'email') required String email,
+    @JsonKey(
+        name: 'emailVisibility',
+        fromJson: JsonParser.boolFromJson,
+        toJson: JsonParser.boolToJson)
     required bool emailVisibility,
-    required String firstName,
+    @JsonKey(name: 'firstName') required String firstName,
+    @JsonKey(
+        name: 'isActive',
+        fromJson: JsonParser.boolFromJson,
+        toJson: JsonParser.boolToJson)
     required bool isActive,
-    required String lastName,
-    required UserType type,
-    required String username,
+    @JsonKey(name: 'lastName') required String lastName,
+    @JsonKey(name: 'type') required UserType type,
+    @JsonKey(name: 'username') required String username,
+    @JsonKey(
+        name: 'verified',
+        fromJson: JsonParser.boolFromJson,
+        toJson: JsonParser.boolToJson)
     required bool verified,
   }) = _UserDataModel;
 
