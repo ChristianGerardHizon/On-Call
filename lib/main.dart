@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pocketbase/pocketbase.dart';
 
 import 'core/router/router.dart';
 
@@ -29,6 +28,7 @@ final coreRepoProvider = Provider((ref) {
   );
   return CoreRepository(pb, config);
 });
+
 final authRepoProvider =
     Provider((ref) => AuthRepository(ref.read(coreRepoProvider)));
 final adminRepoProvider =

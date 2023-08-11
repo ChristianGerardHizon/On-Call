@@ -47,7 +47,7 @@ mixin _$SpCreateState {
     required TResult Function(SpCreateAuthenticatedState value) authenticated,
     required TResult Function(SpCreateUnAuthenticatedState value)
         unauthenticated,
-    required TResult Function(SpCreateLoadingtate value) loading,
+    required TResult Function(SpCreateLoadingState value) loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,7 +55,7 @@ mixin _$SpCreateState {
     TResult? Function(SpCreateFailedState value)? failed,
     TResult? Function(SpCreateAuthenticatedState value)? authenticated,
     TResult? Function(SpCreateUnAuthenticatedState value)? unauthenticated,
-    TResult? Function(SpCreateLoadingtate value)? loading,
+    TResult? Function(SpCreateLoadingState value)? loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,7 +63,7 @@ mixin _$SpCreateState {
     TResult Function(SpCreateFailedState value)? failed,
     TResult Function(SpCreateAuthenticatedState value)? authenticated,
     TResult Function(SpCreateUnAuthenticatedState value)? unauthenticated,
-    TResult Function(SpCreateLoadingtate value)? loading,
+    TResult Function(SpCreateLoadingState value)? loading,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -193,7 +193,7 @@ class _$SpCreateFailedState implements SpCreateFailedState {
     required TResult Function(SpCreateAuthenticatedState value) authenticated,
     required TResult Function(SpCreateUnAuthenticatedState value)
         unauthenticated,
-    required TResult Function(SpCreateLoadingtate value) loading,
+    required TResult Function(SpCreateLoadingState value) loading,
   }) {
     return failed(this);
   }
@@ -204,7 +204,7 @@ class _$SpCreateFailedState implements SpCreateFailedState {
     TResult? Function(SpCreateFailedState value)? failed,
     TResult? Function(SpCreateAuthenticatedState value)? authenticated,
     TResult? Function(SpCreateUnAuthenticatedState value)? unauthenticated,
-    TResult? Function(SpCreateLoadingtate value)? loading,
+    TResult? Function(SpCreateLoadingState value)? loading,
   }) {
     return failed?.call(this);
   }
@@ -215,7 +215,7 @@ class _$SpCreateFailedState implements SpCreateFailedState {
     TResult Function(SpCreateFailedState value)? failed,
     TResult Function(SpCreateAuthenticatedState value)? authenticated,
     TResult Function(SpCreateUnAuthenticatedState value)? unauthenticated,
-    TResult Function(SpCreateLoadingtate value)? loading,
+    TResult Function(SpCreateLoadingState value)? loading,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -317,7 +317,7 @@ class _$SpCreateAuthenticatedState implements SpCreateAuthenticatedState {
     required TResult Function(SpCreateAuthenticatedState value) authenticated,
     required TResult Function(SpCreateUnAuthenticatedState value)
         unauthenticated,
-    required TResult Function(SpCreateLoadingtate value) loading,
+    required TResult Function(SpCreateLoadingState value) loading,
   }) {
     return authenticated(this);
   }
@@ -328,7 +328,7 @@ class _$SpCreateAuthenticatedState implements SpCreateAuthenticatedState {
     TResult? Function(SpCreateFailedState value)? failed,
     TResult? Function(SpCreateAuthenticatedState value)? authenticated,
     TResult? Function(SpCreateUnAuthenticatedState value)? unauthenticated,
-    TResult? Function(SpCreateLoadingtate value)? loading,
+    TResult? Function(SpCreateLoadingState value)? loading,
   }) {
     return authenticated?.call(this);
   }
@@ -339,7 +339,7 @@ class _$SpCreateAuthenticatedState implements SpCreateAuthenticatedState {
     TResult Function(SpCreateFailedState value)? failed,
     TResult Function(SpCreateAuthenticatedState value)? authenticated,
     TResult Function(SpCreateUnAuthenticatedState value)? unauthenticated,
-    TResult Function(SpCreateLoadingtate value)? loading,
+    TResult Function(SpCreateLoadingState value)? loading,
     required TResult orElse(),
   }) {
     if (authenticated != null) {
@@ -435,7 +435,7 @@ class _$SpCreateUnAuthenticatedState implements SpCreateUnAuthenticatedState {
     required TResult Function(SpCreateAuthenticatedState value) authenticated,
     required TResult Function(SpCreateUnAuthenticatedState value)
         unauthenticated,
-    required TResult Function(SpCreateLoadingtate value) loading,
+    required TResult Function(SpCreateLoadingState value) loading,
   }) {
     return unauthenticated(this);
   }
@@ -446,7 +446,7 @@ class _$SpCreateUnAuthenticatedState implements SpCreateUnAuthenticatedState {
     TResult? Function(SpCreateFailedState value)? failed,
     TResult? Function(SpCreateAuthenticatedState value)? authenticated,
     TResult? Function(SpCreateUnAuthenticatedState value)? unauthenticated,
-    TResult? Function(SpCreateLoadingtate value)? loading,
+    TResult? Function(SpCreateLoadingState value)? loading,
   }) {
     return unauthenticated?.call(this);
   }
@@ -457,7 +457,7 @@ class _$SpCreateUnAuthenticatedState implements SpCreateUnAuthenticatedState {
     TResult Function(SpCreateFailedState value)? failed,
     TResult Function(SpCreateAuthenticatedState value)? authenticated,
     TResult Function(SpCreateUnAuthenticatedState value)? unauthenticated,
-    TResult Function(SpCreateLoadingtate value)? loading,
+    TResult Function(SpCreateLoadingState value)? loading,
     required TResult orElse(),
   }) {
     if (unauthenticated != null) {
@@ -472,25 +472,25 @@ abstract class SpCreateUnAuthenticatedState implements SpCreateState {
 }
 
 /// @nodoc
-abstract class _$$SpCreateLoadingtateCopyWith<$Res> {
-  factory _$$SpCreateLoadingtateCopyWith(_$SpCreateLoadingtate value,
-          $Res Function(_$SpCreateLoadingtate) then) =
-      __$$SpCreateLoadingtateCopyWithImpl<$Res>;
+abstract class _$$SpCreateLoadingStateCopyWith<$Res> {
+  factory _$$SpCreateLoadingStateCopyWith(_$SpCreateLoadingState value,
+          $Res Function(_$SpCreateLoadingState) then) =
+      __$$SpCreateLoadingStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$SpCreateLoadingtateCopyWithImpl<$Res>
-    extends _$SpCreateStateCopyWithImpl<$Res, _$SpCreateLoadingtate>
-    implements _$$SpCreateLoadingtateCopyWith<$Res> {
-  __$$SpCreateLoadingtateCopyWithImpl(
-      _$SpCreateLoadingtate _value, $Res Function(_$SpCreateLoadingtate) _then)
+class __$$SpCreateLoadingStateCopyWithImpl<$Res>
+    extends _$SpCreateStateCopyWithImpl<$Res, _$SpCreateLoadingState>
+    implements _$$SpCreateLoadingStateCopyWith<$Res> {
+  __$$SpCreateLoadingStateCopyWithImpl(_$SpCreateLoadingState _value,
+      $Res Function(_$SpCreateLoadingState) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$SpCreateLoadingtate implements SpCreateLoadingtate {
-  const _$SpCreateLoadingtate();
+class _$SpCreateLoadingState implements SpCreateLoadingState {
+  const _$SpCreateLoadingState();
 
   @override
   String toString() {
@@ -500,7 +500,7 @@ class _$SpCreateLoadingtate implements SpCreateLoadingtate {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SpCreateLoadingtate);
+        (other.runtimeType == runtimeType && other is _$SpCreateLoadingState);
   }
 
   @override
@@ -550,7 +550,7 @@ class _$SpCreateLoadingtate implements SpCreateLoadingtate {
     required TResult Function(SpCreateAuthenticatedState value) authenticated,
     required TResult Function(SpCreateUnAuthenticatedState value)
         unauthenticated,
-    required TResult Function(SpCreateLoadingtate value) loading,
+    required TResult Function(SpCreateLoadingState value) loading,
   }) {
     return loading(this);
   }
@@ -561,7 +561,7 @@ class _$SpCreateLoadingtate implements SpCreateLoadingtate {
     TResult? Function(SpCreateFailedState value)? failed,
     TResult? Function(SpCreateAuthenticatedState value)? authenticated,
     TResult? Function(SpCreateUnAuthenticatedState value)? unauthenticated,
-    TResult? Function(SpCreateLoadingtate value)? loading,
+    TResult? Function(SpCreateLoadingState value)? loading,
   }) {
     return loading?.call(this);
   }
@@ -572,7 +572,7 @@ class _$SpCreateLoadingtate implements SpCreateLoadingtate {
     TResult Function(SpCreateFailedState value)? failed,
     TResult Function(SpCreateAuthenticatedState value)? authenticated,
     TResult Function(SpCreateUnAuthenticatedState value)? unauthenticated,
-    TResult Function(SpCreateLoadingtate value)? loading,
+    TResult Function(SpCreateLoadingState value)? loading,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -582,6 +582,6 @@ class _$SpCreateLoadingtate implements SpCreateLoadingtate {
   }
 }
 
-abstract class SpCreateLoadingtate implements SpCreateState {
-  const factory SpCreateLoadingtate() = _$SpCreateLoadingtate;
+abstract class SpCreateLoadingState implements SpCreateState {
+  const factory SpCreateLoadingState() = _$SpCreateLoadingState;
 }

@@ -1,22 +1,25 @@
 import 'package:core_package/core_package.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:go_router/go_router.dart';
 import 'package:on_call/core/widgets/widgets.dart';
 import 'package:on_call/features/admin/screens/admin_sp_list_screen.dart';
 
+import '../providers/providers.dart';
+
 final _formKey = GlobalKey<FormBuilderState>();
 
-class AdminSPCreateScreen extends StatelessWidget {
+class AdminSPCreateScreen extends ConsumerWidget {
   static const String route = '/admin/create-service-provider';
   const AdminSPCreateScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final router = GoRouter.of(context);
 
-    final error = 'Something of an error..';
+    const error = 'Something of an error..';
 
     return FormBuilder(
       key: _formKey,
@@ -155,7 +158,7 @@ class AdminSPCreateScreen extends StatelessWidget {
                   final state = _formKey.currentState;
                   if (state != null) {
                     state.saveAndValidate(focusOnInvalid: true);
-                    flog.d(state.value);
+                    ref.watch(spCreateProvider.notifier).register(state.value);
                   }
                 },
                 child: const Text('Submit'),
