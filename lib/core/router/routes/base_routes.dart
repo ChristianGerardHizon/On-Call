@@ -17,20 +17,19 @@ List<RouteBase> baseRoutes = [
     },
   ),
   GoRoute(
-    name: 'logout',
-    path: '/logout',
+    path: LogoutScreen.route,
     builder: (context, state) => const LogoutScreen(),
   ),
   GoRoute(
-    path: '/register',
+    path: RegistrationScreen.route,
     builder: (context, state) => const RegistrationScreen(),
   ),
   GoRoute(
-    path: '/recovery',
+    path: RecoveryScreen.route,
     builder: (context, state) => const RecoveryScreen(),
   ),
   GoRoute(
-    path: '/pending',
+    path: PendingScreen.route,
     builder: (context, state) => const PendingScreen(),
   ),
   GoRoute(
@@ -42,8 +41,7 @@ List<RouteBase> baseRoutes = [
 
   // splash screen
   GoRoute(
-    name: 'splash',
-    path: '/splash',
+    path: SplashScreen.route,
     builder: (context, state) => const SplashScreen(),
   ),
 

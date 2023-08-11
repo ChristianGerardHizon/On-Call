@@ -1,5 +1,4 @@
 import 'package:core_package/entities/entities.dart';
-import 'package:email_validator/email_validator.dart';
 import 'package:equatable/equatable.dart';
 
 class LoginScreenState extends Equatable {

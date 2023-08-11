@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:icons_flutter/icons_flutter.dart';
-import 'package:on_call/features/admin/screens/admin_dashboard_screen.dart';
 import 'package:on_call/features/admin/screens/screens.dart';
 
 /// Builds the "shell" for the app by building a Scaffold with a

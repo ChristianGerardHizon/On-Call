@@ -2,7 +2,7 @@
     <application
         android:icon="@mipmap/ic_launcher"
         android:name="${applicationName}"
-        android:label="PassesBox">
+        android:label="On Call">
         <activity
             android:name=".MainActivity"
             android:exported="true"

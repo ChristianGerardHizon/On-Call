@@ -7,6 +7,8 @@ import '../../../core/providers/providers.dart';
 class PendingScreen extends ConsumerWidget {
   const PendingScreen({super.key});
 
+  static String route = '/pending';
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(authProvider);

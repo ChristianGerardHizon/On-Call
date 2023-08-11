@@ -7,6 +7,8 @@ import '../../../core/providers/providers.dart';
 class LogoutScreen extends ConsumerWidget {
   const LogoutScreen({super.key});
 
+  static String route = '/logout';
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(authProvider);

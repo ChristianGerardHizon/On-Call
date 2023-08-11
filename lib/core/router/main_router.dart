@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:on_call/core/providers/app/app.dart';
 import 'package:on_call/core/providers/auth/auth.dart';
 import 'package:on_call/core/router/router.dart';
+import 'package:on_call/features/auth/screens/logout_screen.dart';
 
 import '../../features/common/screens/screens.dart';
 
@@ -13,7 +14,7 @@ final routerProvider = Provider<GoRouter>((ref) {
   final adminRoutes = buildAdminRoutes(ref);
 
   List<RouteBase> routes = [...baseRoutes, ...customerRoutes, ...adminRoutes];
-  String initialRoute = '/splash';
+  String initialRoute = SplashScreen.route;
   return GoRouter(
     navigatorKey: rootNavigatorKey,
     redirect: (context, state) => globalRedirect(context, state, ref),
@@ -29,19 +30,18 @@ globalRedirect(
   ProviderRef<GoRouter> ref,
 ) {
   final user = ref.read(authProvider).user;
-  // final type = ref.read(authProvider).type;
   final isInitialized = ref.read(appProvider).initialized;
   final fullPath = state.fullPath ?? '';
   final segments = state.uri.pathSegments;
   final isLoggedIn = user != null;
   final isAdmin = user?.type == UserType.admin;
 
-  if (fullPath == '/logout') {
+  if (fullPath == LogoutScreen.route) {
     return null;
   }
 
   if (isInitialized == false) {
-    return '/splash';
+    return SplashScreen.route;
   }
 
   if (isLoggedIn && user.isActive == false) {

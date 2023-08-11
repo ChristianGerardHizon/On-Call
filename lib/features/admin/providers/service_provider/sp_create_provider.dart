@@ -1,4 +1,5 @@
 import 'package:admin_package/admin_package.dart';
+import 'package:core_package/core_package.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:on_call/main.dart';
@@ -7,7 +8,8 @@ part 'sp_create_provider.freezed.dart';
 
 @freezed
 class SpCreateState with _$SpCreateState {
-  const factory SpCreateState.failed({String? status}) = SpCreateFailedState;
+  const factory SpCreateState.failed({required String status}) =
+      SpCreateFailedState;
   const factory SpCreateState.authenticated() = SpCreateAuthenticatedState;
   const factory SpCreateState.unauthenticated() = SpCreateUnAuthenticatedState;
   const factory SpCreateState.loading() = SpCreateLoadingState;
@@ -20,8 +22,11 @@ class AuthNotifier extends StateNotifier<SpCreateState> {
   final AdminRepository repo;
 
   // Call this function to simulate a login
-  void register(Map<String, dynamic> json) {
+  Future<void> register(Map<String, dynamic> json) async {
+    flog.d(json);
     state = const SpCreateState.loading();
+    await Future.delayed(const Duration(seconds: 2));
+    // state = const SpCreateState.failed(status: 'Failed to create account...');
     state = const SpCreateState.authenticated();
   }
 }

@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SpCreateState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? status) failed,
+    required TResult Function(String status) failed,
     required TResult Function() authenticated,
     required TResult Function() unauthenticated,
     required TResult Function() loading,
@@ -26,7 +26,7 @@ mixin _$SpCreateState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? status)? failed,
+    TResult? Function(String status)? failed,
     TResult? Function()? authenticated,
     TResult? Function()? unauthenticated,
     TResult? Function()? loading,
@@ -34,7 +34,7 @@ mixin _$SpCreateState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? status)? failed,
+    TResult Function(String status)? failed,
     TResult Function()? authenticated,
     TResult Function()? unauthenticated,
     TResult Function()? loading,
@@ -93,7 +93,7 @@ abstract class _$$SpCreateFailedStateCopyWith<$Res> {
           $Res Function(_$SpCreateFailedState) then) =
       __$$SpCreateFailedStateCopyWithImpl<$Res>;
   @useResult
-  $Res call({String? status});
+  $Res call({String status});
 }
 
 /// @nodoc
@@ -107,13 +107,13 @@ class __$$SpCreateFailedStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = freezed,
+    Object? status = null,
   }) {
     return _then(_$SpCreateFailedState(
-      status: freezed == status
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -121,10 +121,10 @@ class __$$SpCreateFailedStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SpCreateFailedState implements SpCreateFailedState {
-  const _$SpCreateFailedState({this.status});
+  const _$SpCreateFailedState({required this.status});
 
   @override
-  final String? status;
+  final String status;
 
   @override
   String toString() {
@@ -152,7 +152,7 @@ class _$SpCreateFailedState implements SpCreateFailedState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? status) failed,
+    required TResult Function(String status) failed,
     required TResult Function() authenticated,
     required TResult Function() unauthenticated,
     required TResult Function() loading,
@@ -163,7 +163,7 @@ class _$SpCreateFailedState implements SpCreateFailedState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? status)? failed,
+    TResult? Function(String status)? failed,
     TResult? Function()? authenticated,
     TResult? Function()? unauthenticated,
     TResult? Function()? loading,
@@ -174,7 +174,7 @@ class _$SpCreateFailedState implements SpCreateFailedState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? status)? failed,
+    TResult Function(String status)? failed,
     TResult Function()? authenticated,
     TResult Function()? unauthenticated,
     TResult Function()? loading,
@@ -226,10 +226,10 @@ class _$SpCreateFailedState implements SpCreateFailedState {
 }
 
 abstract class SpCreateFailedState implements SpCreateState {
-  const factory SpCreateFailedState({final String? status}) =
+  const factory SpCreateFailedState({required final String status}) =
       _$SpCreateFailedState;
 
-  String? get status;
+  String get status;
   @JsonKey(ignore: true)
   _$$SpCreateFailedStateCopyWith<_$SpCreateFailedState> get copyWith =>
       throw _privateConstructorUsedError;
@@ -276,7 +276,7 @@ class _$SpCreateAuthenticatedState implements SpCreateAuthenticatedState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? status) failed,
+    required TResult Function(String status) failed,
     required TResult Function() authenticated,
     required TResult Function() unauthenticated,
     required TResult Function() loading,
@@ -287,7 +287,7 @@ class _$SpCreateAuthenticatedState implements SpCreateAuthenticatedState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? status)? failed,
+    TResult? Function(String status)? failed,
     TResult? Function()? authenticated,
     TResult? Function()? unauthenticated,
     TResult? Function()? loading,
@@ -298,7 +298,7 @@ class _$SpCreateAuthenticatedState implements SpCreateAuthenticatedState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? status)? failed,
+    TResult Function(String status)? failed,
     TResult Function()? authenticated,
     TResult Function()? unauthenticated,
     TResult Function()? loading,
@@ -394,7 +394,7 @@ class _$SpCreateUnAuthenticatedState implements SpCreateUnAuthenticatedState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? status) failed,
+    required TResult Function(String status) failed,
     required TResult Function() authenticated,
     required TResult Function() unauthenticated,
     required TResult Function() loading,
@@ -405,7 +405,7 @@ class _$SpCreateUnAuthenticatedState implements SpCreateUnAuthenticatedState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? status)? failed,
+    TResult? Function(String status)? failed,
     TResult? Function()? authenticated,
     TResult? Function()? unauthenticated,
     TResult? Function()? loading,
@@ -416,7 +416,7 @@ class _$SpCreateUnAuthenticatedState implements SpCreateUnAuthenticatedState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? status)? failed,
+    TResult Function(String status)? failed,
     TResult Function()? authenticated,
     TResult Function()? unauthenticated,
     TResult Function()? loading,
@@ -509,7 +509,7 @@ class _$SpCreateLoadingState implements SpCreateLoadingState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? status) failed,
+    required TResult Function(String status) failed,
     required TResult Function() authenticated,
     required TResult Function() unauthenticated,
     required TResult Function() loading,
@@ -520,7 +520,7 @@ class _$SpCreateLoadingState implements SpCreateLoadingState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? status)? failed,
+    TResult? Function(String status)? failed,
     TResult? Function()? authenticated,
     TResult? Function()? unauthenticated,
     TResult? Function()? loading,
@@ -531,7 +531,7 @@ class _$SpCreateLoadingState implements SpCreateLoadingState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? status)? failed,
+    TResult Function(String status)? failed,
     TResult Function()? authenticated,
     TResult Function()? unauthenticated,
     TResult Function()? loading,

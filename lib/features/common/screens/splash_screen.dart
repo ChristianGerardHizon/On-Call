@@ -7,6 +7,8 @@ import '../../../core/providers/providers.dart';
 class SplashScreen extends ConsumerWidget {
   const SplashScreen({super.key});
 
+  static String route = '/_';
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final router = GoRouter.of(context);
