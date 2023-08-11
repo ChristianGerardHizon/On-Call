@@ -4,24 +4,20 @@ import 'package:core_package/core_package.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:on_call/main.dart';
 
-final spViewIdProvider = StateProvider.autoDispose<String?>((ref) => null);
-final spViewProvider = AsyncNotifierProvider.autoDispose<
-    ServiceProviderViewNotifier, ServiceProviderUser?>(
+final spViewProvider = AsyncNotifierProvider.family<ServiceProviderViewNotifier,
+    ServiceProviderUser?, String?>(
   () => ServiceProviderViewNotifier(),
 );
 
 class ServiceProviderViewNotifier
-    extends AutoDisposeAsyncNotifier<ServiceProviderUser?> {
+    extends FamilyAsyncNotifier<ServiceProviderUser?, String?> {
   ServiceProviderViewNotifier();
   @override
-  FutureOr<ServiceProviderUser?> build() async {
-    final id = ref.read(spViewIdProvider);
-
-    if (id != null) {
-      return _get(id);
+  FutureOr<ServiceProviderUser?> build(String? id) async {
+    if (id == null) {
+      return Future.error('id is null');
     }
-
-    return null;
+    return _get(id);
   }
 
   Future<void> getServiceProvider(String id) async {

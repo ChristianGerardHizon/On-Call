@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:on_call/features/auth/providers/login/login_provider.dart';
-import 'package:on_call/features/auth/widgets/error_message.dart';
+import 'package:on_call/core/widgets/error_message.dart';
 
 import '../../../core/providers/providers.dart';
 
@@ -90,7 +90,7 @@ class LoginScreen extends ConsumerWidget {
                   ),
                 ),
 
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
 
                 SizedBox(
                   height: 40,

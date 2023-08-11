@@ -1,67 +1,45 @@
-import 'package:admin_package/admin_package.dart';
-import 'package:authentication_package/authentication_package.dart';
-import 'package:core_package/enums/user_type.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:on_call/main.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-final spCreateProvider = StateProvider<RegistrationFormController>((ref) {
-  final auth = ref.read(authRepoProvider);
-  final admin = ref.read(adminRepoProvider);
-  return RegistrationFormController(auth, admin);
+
+part 'sp_create_provider.freezed.dart';
+
+// Authentication state
+enum SpCreateScreenState {
+  unauthenticated,
+  authenticated,
+  loading,
+}
+
+// Authentication state notifier
+class AuthNotifier extends StateNotifier<SpCreateState> {
+  AuthNotifier() : super(const SpCreateState.unauthenticated());
+
+  // Call this function to simulate a login
+  void login() {
+    state = const SpCreateState.loading();
+
+    state = const SpCreateState.authenticated();
+  }
+
+  // Call this function to simulate a logout
+  void logout() {
+    state = const SpCreateState.loading();
+
+    state = const SpCreateState.unauthenticated();
+  }
+}
+
+// Riverpod provider for authentication
+final spCreateProvider =
+    StateNotifierProvider<AuthNotifier, SpCreateState>((ref) {
+  return AuthNotifier();
 });
 
-class RegistrationFormController extends StateNotifier<RegistrationParams> {
-  RegistrationFormController(this._authRepo, this._adminRepo)
-      : super(
-          RegistrationParams(
-            username: '',
-            email: '',
-            emailVisibility: true,
-            password: '',
-            passwordConfirm: '',
-            firstName: '',
-            lastName: '',
-            type: UserType.serviceProvider,
-            isActive: true,
-          ),
-        );
-
-  final AuthRepository _authRepo;
-  final AdminRepository _adminRepo;
-
-  void setUsername(String username) {
-    state = state.copyWith(username: username);
-  }
-
-  void setEmail(String email) {
-    state = state.copyWith(email: email);
-  }
-
-  void setEmailVisibility(bool emailVisibility) {
-    state = state.copyWith(emailVisibility: emailVisibility);
-  }
-
-  void setPassword(String password) {
-    state = state.copyWith(password: password);
-  }
-
-  void setPasswordConfirm(String passwordConfirm) {
-    state = state.copyWith(passwordConfirm: passwordConfirm);
-  }
-
-  void setFirstName(String firstName) {
-    state = state.copyWith(firstName: firstName);
-  }
-
-  void setLastName(String lastName) {
-    state = state.copyWith(lastName: lastName);
-  }
-
-  void setType(UserType type) {
-    state = state.copyWith(type: type);
-  }
-
-  void setIsActive(bool isActive) {
-    state = state.copyWith(isActive: isActive);
-  }
+@freezed
+class SpCreateState with _$SpCreateState {
+  const factory SpCreateState.failed({String? status}) = SpCreateFailedState;
+  const factory SpCreateState.authenticated() = SpCreateAuthenticatedState;
+  const factory SpCreateState.unauthenticated() = SpCreateUnAuthenticatedState;
+  const factory SpCreateState.loading() = SpCreateLoadingtate;
 }

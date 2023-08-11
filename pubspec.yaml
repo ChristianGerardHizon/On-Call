@@ -10,11 +10,11 @@ environment:
 
 dependencies:
   admin_package:
-    path: ./packages/admin_package
+    path: ../on_call_packages/admin_package
   authentication_package:
-    path: ./packages/authentication_package
+    path: ../on_call_packages/authentication_package
   core_package:
-    path: ./packages/core_package
+    path: ../on_call_packages/core_package
   cupertino_icons: ^1.0.2
   dartx: ^1.2.0
   email_validator: ^2.1.17
@@ -22,9 +22,12 @@ dependencies:
   fl_chart: ^0.63.0
   flutter:
     sdk: flutter
+  flutter_form_builder: ^9.1.0
   flutter_riverpod: ^2.3.6
   flutter_web_plugins:
     sdk: flutter
+  form_builder_validators: ^9.0.0
+  freezed_annotation: any
   go_router: ^10.0.0
   google_fonts: ^5.1.0
   icons_flutter: ^0.0.4
@@ -32,10 +35,11 @@ dependencies:
   webview_flutter: ^4.2.2
 
 dev_dependencies:
-  build_runner: null
+  build_runner: ^2.4.6
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
+  freezed: any
 
 flutter:
   uses-material-design: true

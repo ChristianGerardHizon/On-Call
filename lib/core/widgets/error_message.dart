@@ -9,7 +9,7 @@ class ErrorMessage extends StatelessWidget {
   Widget build(BuildContext context) {
     return DecoratedBox(
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.red, width: 2),
+        border: Border.all(color: Colors.red.shade400, width: 2),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Padding(

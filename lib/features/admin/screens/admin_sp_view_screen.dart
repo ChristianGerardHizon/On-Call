@@ -14,10 +14,9 @@ class AdminSPViewScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(spViewProvider);
-    final notifier = ref.watch(spViewProvider.notifier);
-    final idNotifier = ref.watch(spViewIdProvider.notifier);
-
+    final provider = spViewProvider(id);
+    final state = ref.watch(provider);
+    final notifier = ref.watch(provider.notifier);
     final router = GoRouter.of(context);
 
     final appBar = AppBar(
@@ -55,7 +54,7 @@ class AdminSPViewScreen extends ConsumerWidget {
             const Text('Something went wrong'),
             TextButton(
               onPressed: () =>
-                  ref.watch(spViewProvider.notifier).getServiceProvider(id!),
+                  ref.watch(provider.notifier).getServiceProvider(id!),
               child: const Text('Try Again..'),
             )
           ],
@@ -64,9 +63,9 @@ class AdminSPViewScreen extends ConsumerWidget {
         data: (sp) {
           // update service provider
           if (sp == null) {
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              notifier.getServiceProvider(id!);
-            });
+            // WidgetsBinding.instance.addPostFrameCallback((_) {
+            //   notifier.getServiceProvider(id!);
+            // });
             return Center(
               child: Column(
                 children: [
