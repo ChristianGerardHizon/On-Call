@@ -15,7 +15,7 @@ class PendingScreen extends ConsumerWidget {
     final notifier = ref.read(authProvider.notifier);
     final router = GoRouter.of(context);
 
-    if (state.user?.isActive ?? false) {
+    if ((state.user?.isActive) ?? false) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         router.go('/');
       });

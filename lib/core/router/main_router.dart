@@ -35,6 +35,7 @@ globalRedirect(
   final segments = state.uri.pathSegments;
   final isLoggedIn = user != null;
   final isAdmin = user?.type == UserType.admin;
+  final isServiceProvider = user?.type == UserType.serviceProvider;
 
   if (fullPath == LogoutScreen.route) {
     return null;
@@ -44,11 +45,11 @@ globalRedirect(
     return SplashScreen.route;
   }
 
-  if (isLoggedIn && user.isActive == false) {
+  if (isLoggedIn && isServiceProvider && user.isActive == false) {
     return '/pending';
   }
 
-  if (isLoggedIn && !segments.contains('admin') && isAdmin) {
+  if (isLoggedIn && isAdmin && !segments.contains('admin')) {
     return '/admin';
   }
 

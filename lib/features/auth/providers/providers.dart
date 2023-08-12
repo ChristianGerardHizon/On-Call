@@ -1,2 +1,2 @@
-export 'login/login.dart';
-export 'recovery_provider.dart';
+export 'login_provider.dart';
+export 'registration_provider.dart';

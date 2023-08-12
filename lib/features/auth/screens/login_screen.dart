@@ -1,14 +1,16 @@
+import 'package:core_package/core_package.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:go_router/go_router.dart';
-import 'package:on_call/features/auth/providers/login/login_provider.dart';
-import 'package:on_call/core/widgets/error_message.dart';
-import 'package:on_call/features/auth/screens/recovery_screen.dart';
 
 import '../../../core/providers/providers.dart';
+import '../../../core/widgets/widgets.dart';
+import '../providers/providers.dart';
 import 'screens.dart';
 
-final formKey = GlobalKey<FormState>();
+final _formKey = GlobalKey<FormBuilderState>();
 
 class LoginScreen extends ConsumerWidget {
   const LoginScreen({super.key, this.returnURL});
@@ -17,133 +19,169 @@ class LoginScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(loginProvider);
-    final loginState = ref.read(loginProvider.notifier);
-
-    final authState = ref.watch(authProvider);
-    final authNotifier = ref.watch(authProvider.notifier);
-
     final router = GoRouter.of(context);
-    final error = state.error;
+    final loginProd = ref.watch(loginScreenProd);
 
-    if (state.isSuccess && authState.isLoading == false) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        router.go('/');
-      });
-    }
-
-    if (authState.user != null && authState.isLoading == false) {
+    if (ref.read(loginScreenProd) is LoginScreenAuthenticated) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         _showPopup(context);
       });
     }
+    ref.listen(loginScreenProd, (old, state) {
+      flog.d(state);
+      if (state is LoginScreenSuccess) {
+        WidgetsBinding.instance.addPostFrameCallback((_) async {
+          await ref.watch(authProvider.notifier).getAuth();
+          router.go('/');
+        });
+        return;
+      }
 
-    Future login() async {
-      await loginState.login();
-      authNotifier.getAuth();
-    }
+      if (state is LoginScreenAuthenticated) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          _showPopup(context);
+        });
+        return;
+      }
+    });
 
-    return Scaffold(
-      appBar: AppBar(title: const Text('Login')),
-      body: Visibility(
-        visible: state.isLoading || state.isSuccess,
-        maintainState: false,
-        maintainAnimation: false,
-        replacement: Column(
-          children: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    // error message
-                    if (error != null)
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 8),
-                        child: SizedBox(
-                          width: double.maxFinite,
-                          child: ErrorMessage(message: error),
-                        ),
-                      ),
-
-                    // text inputs
-                    TextFormField(
-                      onFieldSubmitted: (value) => login(),
-                      initialValue: state.email,
-                      onChanged: (value) => loginState.updateEmail(value),
-                      decoration: const InputDecoration(labelText: 'Email'),
-                      validator: (value) => loginState.validateEmail(),
-                    ),
-                    const SizedBox(height: 16),
-                    TextFormField(
-                      onFieldSubmitted: (value) => login(),
-                      initialValue: state.password,
-                      onChanged: (value) => loginState.updatePassword(value),
-                      decoration: const InputDecoration(labelText: 'Password'),
-                      obscureText: true,
-                      validator: (value) => loginState.validatePassword(),
-                    ),
-                    const SizedBox(height: 10),
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          TextButton(
-                            onPressed: () {
-                              router.go(RecoveryScreen.route);
-                            },
-                            child: const Text('Forgot Password?'),
-                          ),
-                          const SizedBox()
-                        ]),
-                    const SizedBox(height: 20),
-
-                    // login button
-                    SizedBox(
-                      height: 40,
-                      width: double.maxFinite,
-                      child: ElevatedButton(
-                        onPressed: login,
-                        child: const Text('Login'),
-                      ),
-                    ),
-
-                    const SizedBox(height: 10),
-
-                    SizedBox(
-                      height: 40,
-                      child: TextButton(
-                        onPressed: () {
-                          router.go('/');
-                        },
-                        child: const Text('Back'),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 40,
-              width: double.maxFinite,
-              child: TextButton(
-                onPressed: () {
-                  router.go(RegistrationScreen.route);
-                },
-                child: const Text('Register here.'),
-              ),
-            ),
-          ],
+    return FormBuilder(
+      key: _formKey,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Login'),
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () => router.canPop() ? router.pop() : router.go('/'),
+          ),
         ),
-        child: SizedBox.expand(
-          child: DecoratedBox(
-            decoration: BoxDecoration(
-              color: Colors.white.withOpacity(.8),
-            ),
-            child: const Center(
-              child: CircularProgressIndicator(),
+        body: Visibility(
+          visible: loginProd.maybeWhen(
+            orElse: () => true,
+            loading: () => false,
+            success: () => false,
+          ),
+          maintainState: false,
+          maintainAnimation: false,
+          replacement: SizedBox.expand(
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(.8),
+              ),
+              child: const Center(
+                child: CircularProgressIndicator(),
+              ),
             ),
           ),
+          child: Column(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      // error message
+                      buildFailedMessage(loginProd),
+
+                      FormTextField(
+                          name: 'email',
+                          label: 'Email',
+                          validators: [
+                            FormBuilderValidators.required(),
+                            FormBuilderValidators.email(),
+                          ],
+                          padding: const EdgeInsets.only(bottom: 10)),
+
+                      FormTextField(
+                          name: 'password',
+                          label: 'Password',
+                          padding: const EdgeInsets.only(bottom: 10),
+                          obscure: true,
+                          validators: [
+                            FormBuilderValidators.required(),
+                            FormBuilderValidators.minLength(6),
+                          ]),
+
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            TextButton(
+                              onPressed: () {
+                                router.go(RecoveryScreen.route);
+                              },
+                              child: const Text('Forgot Password?'),
+                            ),
+                            const SizedBox()
+                          ]),
+                      const SizedBox(height: 20),
+
+                      // login button
+                      FormSubmitButton(
+                        width: double.maxFinite,
+                        label: const Text('Login'),
+                        onSubmit: () {
+                          final state = _formKey.currentState;
+                          if (state!.saveAndValidate(focusOnInvalid: true)) {
+                            ref
+                                .watch(loginScreenProd.notifier)
+                                .login(state.value);
+                          }
+                        },
+                      ),
+
+                      const SizedBox(height: 20),
+
+                      TextButton(
+                        onPressed: () {
+                          router.go(RegistrationScreen.routeAsSP);
+                        },
+                        child: const Text('Register as Service Provider'),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 40,
+                width: double.maxFinite,
+                child: TextButton(
+                  onPressed: () => router.go(RegistrationScreen.route),
+                  child: RichText(
+                    text: const TextSpan(
+                      text: "Don't have an account? ",
+                      style: TextStyle(
+                        color: Colors.black,
+                      ),
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: 'Register here',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blue, // Customize the color as needed
+                          ),
+                        ),
+                        // You can add more TextSpan widgets if needed
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget buildFailedMessage(LoginScreenState state) {
+    return state.maybeWhen(
+      orElse: () => const SizedBox(),
+      failed: (status) => Padding(
+        padding: const EdgeInsets.only(bottom: 20),
+        child: SizedBox(
+          width: double.maxFinite,
+          child: ErrorMessage(message: status ?? 'Something went wrong'),
         ),
       ),
     );
@@ -153,6 +191,9 @@ class LoginScreen extends ConsumerWidget {
     final router = GoRouter.of(context);
 
     showDialog(
+      useRootNavigator: true,
+      barrierDismissible: false,
+      useSafeArea: true,
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
@@ -166,9 +207,13 @@ class LoginScreen extends ConsumerWidget {
             ElevatedButton(
               onPressed: () {
                 Navigator.pop(context);
-                router.go('/');
+                if (router.canPop()) {
+                  router.pop();
+                } else {
+                  router.go('/');
+                }
               },
-              child: const Text('Close'),
+              child: const Text('Return'),
             ),
           ],
         );

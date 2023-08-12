@@ -5,14 +5,12 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:on_call/core/widgets/form_submit_button.dart';
 import 'package:on_call/core/widgets/form_text_field.dart';
 
-import '../providers/providers.dart';
-
 final _formKey = GlobalKey<FormBuilderState>();
 
 class RecoveryScreen extends ConsumerWidget {
   const RecoveryScreen({super.key});
 
-  static String route = '/recovery';
+  static String route = '/login/recovery';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -37,7 +35,7 @@ class RecoveryScreen extends ConsumerWidget {
                     onSubmit: () {
                       final state = _formKey.currentState;
                       if (state!.saveAndValidate(focusOnInvalid: true)) {
-                        ref.watch(recoveryProd.notifier).register(state.value);
+                        // ref.watch(recoveryProd.notifier).register(state.value);
                       }
                     },
                   ),

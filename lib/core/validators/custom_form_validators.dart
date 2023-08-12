@@ -12,11 +12,15 @@ class CustomFormValidators {
   ///            If not provided, a default error message is used.
   ///
   /// Returns `null` if the values match, or an error message if they do not.
-  static String? matchWithField(val, FormBuilderState? state, String field,
-      {String? error}) {
-    final password = state?.fields['password']?.value;
+  static String? matchWithField(
+    val,
+    FormBuilderState? state, {
+    String? field = 'password',
+    String? error,
+  }) {
+    final password = state?.fields[field]?.value;
     if (val != password) {
-      return error ?? 'Fields do not match';
+      return error ?? 'Does not match $field';
     }
     return null;
   }

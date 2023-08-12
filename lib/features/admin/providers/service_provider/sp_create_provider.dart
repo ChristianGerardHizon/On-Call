@@ -3,6 +3,7 @@ import 'package:core_package/core_package.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:on_call/main.dart';
+import 'package:on_call/providers.dart';
 
 part 'sp_create_provider.freezed.dart';
 
@@ -19,11 +20,10 @@ class SpCreateState with _$SpCreateState {
 class AuthNotifier extends StateNotifier<SpCreateState> {
   AuthNotifier(this.repo) : super(const SpCreateState.unauthenticated());
 
-  final AdminRepository repo;
+  final AdminRepositoryImpl repo;
 
   // Call this function to simulate a login
   Future<void> register(Map<String, dynamic> json) async {
-    flog.d(json);
     state = const SpCreateState.loading();
     await Future.delayed(const Duration(seconds: 2));
     // state = const SpCreateState.failed(status: 'Failed to create account...');
@@ -34,5 +34,5 @@ class AuthNotifier extends StateNotifier<SpCreateState> {
 // Riverpod provider for authentication
 final spCreateProvider =
     StateNotifierProvider<AuthNotifier, SpCreateState>((ref) {
-  return AuthNotifier(ref.read(adminRepoProvider));
+  return AuthNotifier(ref.read(adminRepoProd));
 });

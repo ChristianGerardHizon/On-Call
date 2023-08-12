@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:core_package/core_package.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:on_call/main.dart';
+import 'package:on_call/providers.dart';
 
 final spViewProvider = AsyncNotifierProvider.family<ServiceProviderViewNotifier,
     ServiceProviderUser?, String?>(
@@ -29,7 +30,7 @@ class ServiceProviderViewNotifier
   }
 
   Future<ServiceProviderUser?> _get(String id) async {
-    final repo = ref.read(adminRepoProvider);
+    final repo = ref.read(adminRepoProd);
     final successOrFail = await repo.getServiceProviderUser(id);
     return successOrFail.fold(
       (l) => Future.error(l),

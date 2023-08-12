@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:core_package/core_package.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:on_call/main.dart';
+import 'package:on_call/providers.dart';
 
 import '../../../../core/typedefs/typedefs.dart';
 
@@ -17,7 +17,7 @@ class ServiceProviderListNotifier
 
   @override
   Future<ServiceProviderUserRecord> build() async {
-    final repo = ref.read(adminRepoProvider);
+    final repo = ref.read(adminRepoProd);
     final successOrFail = await repo.getServiceProviderUsers();
     return successOrFail.fold(
       (l) => Future.error(l),
@@ -27,7 +27,7 @@ class ServiceProviderListNotifier
 
   Future<void> refresh({PageOptions? page}) async {
     state = const AsyncValue.loading();
-    final repo = ref.read(adminRepoProvider);
+    final repo = ref.read(adminRepoProd);
     final successOrFail = await repo.getServiceProviderUsers(page: page);
     state = successOrFail.fold(
       (l) => AsyncValue.error(l, StackTrace.current),
@@ -37,7 +37,7 @@ class ServiceProviderListNotifier
 
   Future<void> search(String query) async {
     state = const AsyncValue.loading();
-    final repo = ref.read(adminRepoProvider);
+    final repo = ref.read(adminRepoProd);
     final page = PageOptions(
         filter:
             'email ~ "$query" || firstName ~ "$query" || lastName ~ "$query"');
@@ -58,7 +58,7 @@ class ServiceProviderListNotifier
     final items = data.value.items;
 
     state = const AsyncValue.loading();
-    final repo = ref.read(adminRepoProvider);
+    final repo = ref.read(adminRepoProd);
     final successOrFail = await repo.getServiceProviderUsers(page: page);
     state = successOrFail.fold(
       (l) => AsyncValue.error(l, StackTrace.current),

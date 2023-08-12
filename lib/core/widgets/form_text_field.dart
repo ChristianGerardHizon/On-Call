@@ -8,6 +8,7 @@ class FormTextField extends StatelessWidget {
   final String name;
   final String label;
   final bool obscure;
+  final EdgeInsets? padding;
   final ValidatorItem? validators;
 
   const FormTextField({
@@ -16,12 +17,13 @@ class FormTextField extends StatelessWidget {
     required this.label,
     this.obscure = false,
     this.validators,
+    this.padding,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 20),
+      padding: padding ?? const EdgeInsets.only(bottom: 20),
       child: FormBuilderTextField(
         name: name,
         obscureText: obscure,

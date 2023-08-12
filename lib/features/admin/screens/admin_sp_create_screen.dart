@@ -89,11 +89,7 @@ class AdminSPCreateScreen extends ConsumerWidget {
                   FormBuilderValidators.required(),
                   FormBuilderValidators.minLength(6),
                   (val) => CustomFormValidators.matchWithField(
-                        val,
-                        _formKey.currentState,
-                        'password',
-                        error: 'Does not match password',
-                      )
+                      val, _formKey.currentState)
                 ]),
             FormSubmitButton(
               label: const Text('Register'),

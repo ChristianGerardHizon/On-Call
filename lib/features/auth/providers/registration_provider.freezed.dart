@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'recovery_provider.dart';
+part of 'registration_provider.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$RecoveryScreenState {
+mixin _$RegisterScreenState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String status) failed,
@@ -43,42 +43,42 @@ mixin _$RecoveryScreenState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(RecoveryScreenStateFailed value) failed,
-    required TResult Function(RecoveryScreenStateSuccecss value) success,
-    required TResult Function(RecoveryScreenStateInitial value) initial,
-    required TResult Function(RecoveryScreenStateLoading value) loading,
+    required TResult Function(RegisterScreenStateFailed value) failed,
+    required TResult Function(RegistrationSuccess value) success,
+    required TResult Function(RegistrationFailed value) initial,
+    required TResult Function(RegistrationLoading value) loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(RecoveryScreenStateFailed value)? failed,
-    TResult? Function(RecoveryScreenStateSuccecss value)? success,
-    TResult? Function(RecoveryScreenStateInitial value)? initial,
-    TResult? Function(RecoveryScreenStateLoading value)? loading,
+    TResult? Function(RegisterScreenStateFailed value)? failed,
+    TResult? Function(RegistrationSuccess value)? success,
+    TResult? Function(RegistrationFailed value)? initial,
+    TResult? Function(RegistrationLoading value)? loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(RecoveryScreenStateFailed value)? failed,
-    TResult Function(RecoveryScreenStateSuccecss value)? success,
-    TResult Function(RecoveryScreenStateInitial value)? initial,
-    TResult Function(RecoveryScreenStateLoading value)? loading,
+    TResult Function(RegisterScreenStateFailed value)? failed,
+    TResult Function(RegistrationSuccess value)? success,
+    TResult Function(RegistrationFailed value)? initial,
+    TResult Function(RegistrationLoading value)? loading,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $RecoveryScreenStateCopyWith<$Res> {
-  factory $RecoveryScreenStateCopyWith(
-          RecoveryScreenState value, $Res Function(RecoveryScreenState) then) =
-      _$RecoveryScreenStateCopyWithImpl<$Res, RecoveryScreenState>;
+abstract class $RegisterScreenStateCopyWith<$Res> {
+  factory $RegisterScreenStateCopyWith(
+          RegisterScreenState value, $Res Function(RegisterScreenState) then) =
+      _$RegisterScreenStateCopyWithImpl<$Res, RegisterScreenState>;
 }
 
 /// @nodoc
-class _$RecoveryScreenStateCopyWithImpl<$Res, $Val extends RecoveryScreenState>
-    implements $RecoveryScreenStateCopyWith<$Res> {
-  _$RecoveryScreenStateCopyWithImpl(this._value, this._then);
+class _$RegisterScreenStateCopyWithImpl<$Res, $Val extends RegisterScreenState>
+    implements $RegisterScreenStateCopyWith<$Res> {
+  _$RegisterScreenStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -87,21 +87,21 @@ class _$RecoveryScreenStateCopyWithImpl<$Res, $Val extends RecoveryScreenState>
 }
 
 /// @nodoc
-abstract class _$$RecoveryScreenStateFailedCopyWith<$Res> {
-  factory _$$RecoveryScreenStateFailedCopyWith(
-          _$RecoveryScreenStateFailed value,
-          $Res Function(_$RecoveryScreenStateFailed) then) =
-      __$$RecoveryScreenStateFailedCopyWithImpl<$Res>;
+abstract class _$$RegisterScreenStateFailedCopyWith<$Res> {
+  factory _$$RegisterScreenStateFailedCopyWith(
+          _$RegisterScreenStateFailed value,
+          $Res Function(_$RegisterScreenStateFailed) then) =
+      __$$RegisterScreenStateFailedCopyWithImpl<$Res>;
   @useResult
   $Res call({String status});
 }
 
 /// @nodoc
-class __$$RecoveryScreenStateFailedCopyWithImpl<$Res>
-    extends _$RecoveryScreenStateCopyWithImpl<$Res, _$RecoveryScreenStateFailed>
-    implements _$$RecoveryScreenStateFailedCopyWith<$Res> {
-  __$$RecoveryScreenStateFailedCopyWithImpl(_$RecoveryScreenStateFailed _value,
-      $Res Function(_$RecoveryScreenStateFailed) _then)
+class __$$RegisterScreenStateFailedCopyWithImpl<$Res>
+    extends _$RegisterScreenStateCopyWithImpl<$Res, _$RegisterScreenStateFailed>
+    implements _$$RegisterScreenStateFailedCopyWith<$Res> {
+  __$$RegisterScreenStateFailedCopyWithImpl(_$RegisterScreenStateFailed _value,
+      $Res Function(_$RegisterScreenStateFailed) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -109,7 +109,7 @@ class __$$RecoveryScreenStateFailedCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
   }) {
-    return _then(_$RecoveryScreenStateFailed(
+    return _then(_$RegisterScreenStateFailed(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -120,22 +120,22 @@ class __$$RecoveryScreenStateFailedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$RecoveryScreenStateFailed implements RecoveryScreenStateFailed {
-  const _$RecoveryScreenStateFailed({required this.status});
+class _$RegisterScreenStateFailed implements RegisterScreenStateFailed {
+  const _$RegisterScreenStateFailed({required this.status});
 
   @override
   final String status;
 
   @override
   String toString() {
-    return 'RecoveryScreenState.failed(status: $status)';
+    return 'RegisterScreenState.failed(status: $status)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RecoveryScreenStateFailed &&
+            other is _$RegisterScreenStateFailed &&
             (identical(other.status, status) || other.status == status));
   }
 
@@ -145,9 +145,9 @@ class _$RecoveryScreenStateFailed implements RecoveryScreenStateFailed {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RecoveryScreenStateFailedCopyWith<_$RecoveryScreenStateFailed>
-      get copyWith => __$$RecoveryScreenStateFailedCopyWithImpl<
-          _$RecoveryScreenStateFailed>(this, _$identity);
+  _$$RegisterScreenStateFailedCopyWith<_$RegisterScreenStateFailed>
+      get copyWith => __$$RegisterScreenStateFailedCopyWithImpl<
+          _$RegisterScreenStateFailed>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -189,10 +189,10 @@ class _$RecoveryScreenStateFailed implements RecoveryScreenStateFailed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(RecoveryScreenStateFailed value) failed,
-    required TResult Function(RecoveryScreenStateSuccecss value) success,
-    required TResult Function(RecoveryScreenStateInitial value) initial,
-    required TResult Function(RecoveryScreenStateLoading value) loading,
+    required TResult Function(RegisterScreenStateFailed value) failed,
+    required TResult Function(RegistrationSuccess value) success,
+    required TResult Function(RegistrationFailed value) initial,
+    required TResult Function(RegistrationLoading value) loading,
   }) {
     return failed(this);
   }
@@ -200,10 +200,10 @@ class _$RecoveryScreenStateFailed implements RecoveryScreenStateFailed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(RecoveryScreenStateFailed value)? failed,
-    TResult? Function(RecoveryScreenStateSuccecss value)? success,
-    TResult? Function(RecoveryScreenStateInitial value)? initial,
-    TResult? Function(RecoveryScreenStateLoading value)? loading,
+    TResult? Function(RegisterScreenStateFailed value)? failed,
+    TResult? Function(RegistrationSuccess value)? success,
+    TResult? Function(RegistrationFailed value)? initial,
+    TResult? Function(RegistrationLoading value)? loading,
   }) {
     return failed?.call(this);
   }
@@ -211,10 +211,10 @@ class _$RecoveryScreenStateFailed implements RecoveryScreenStateFailed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(RecoveryScreenStateFailed value)? failed,
-    TResult Function(RecoveryScreenStateSuccecss value)? success,
-    TResult Function(RecoveryScreenStateInitial value)? initial,
-    TResult Function(RecoveryScreenStateLoading value)? loading,
+    TResult Function(RegisterScreenStateFailed value)? failed,
+    TResult Function(RegistrationSuccess value)? success,
+    TResult Function(RegistrationFailed value)? initial,
+    TResult Function(RegistrationLoading value)? loading,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -224,50 +224,46 @@ class _$RecoveryScreenStateFailed implements RecoveryScreenStateFailed {
   }
 }
 
-abstract class RecoveryScreenStateFailed implements RecoveryScreenState {
-  const factory RecoveryScreenStateFailed({required final String status}) =
-      _$RecoveryScreenStateFailed;
+abstract class RegisterScreenStateFailed implements RegisterScreenState {
+  const factory RegisterScreenStateFailed({required final String status}) =
+      _$RegisterScreenStateFailed;
 
   String get status;
   @JsonKey(ignore: true)
-  _$$RecoveryScreenStateFailedCopyWith<_$RecoveryScreenStateFailed>
+  _$$RegisterScreenStateFailedCopyWith<_$RegisterScreenStateFailed>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$RecoveryScreenStateSuccecssCopyWith<$Res> {
-  factory _$$RecoveryScreenStateSuccecssCopyWith(
-          _$RecoveryScreenStateSuccecss value,
-          $Res Function(_$RecoveryScreenStateSuccecss) then) =
-      __$$RecoveryScreenStateSuccecssCopyWithImpl<$Res>;
+abstract class _$$RegistrationSuccessCopyWith<$Res> {
+  factory _$$RegistrationSuccessCopyWith(_$RegistrationSuccess value,
+          $Res Function(_$RegistrationSuccess) then) =
+      __$$RegistrationSuccessCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$RecoveryScreenStateSuccecssCopyWithImpl<$Res>
-    extends _$RecoveryScreenStateCopyWithImpl<$Res,
-        _$RecoveryScreenStateSuccecss>
-    implements _$$RecoveryScreenStateSuccecssCopyWith<$Res> {
-  __$$RecoveryScreenStateSuccecssCopyWithImpl(
-      _$RecoveryScreenStateSuccecss _value,
-      $Res Function(_$RecoveryScreenStateSuccecss) _then)
+class __$$RegistrationSuccessCopyWithImpl<$Res>
+    extends _$RegisterScreenStateCopyWithImpl<$Res, _$RegistrationSuccess>
+    implements _$$RegistrationSuccessCopyWith<$Res> {
+  __$$RegistrationSuccessCopyWithImpl(
+      _$RegistrationSuccess _value, $Res Function(_$RegistrationSuccess) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$RecoveryScreenStateSuccecss implements RecoveryScreenStateSuccecss {
-  const _$RecoveryScreenStateSuccecss();
+class _$RegistrationSuccess implements RegistrationSuccess {
+  const _$RegistrationSuccess();
 
   @override
   String toString() {
-    return 'RecoveryScreenState.success()';
+    return 'RegisterScreenState.success()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$RecoveryScreenStateSuccecss);
+        (other.runtimeType == runtimeType && other is _$RegistrationSuccess);
   }
 
   @override
@@ -313,10 +309,10 @@ class _$RecoveryScreenStateSuccecss implements RecoveryScreenStateSuccecss {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(RecoveryScreenStateFailed value) failed,
-    required TResult Function(RecoveryScreenStateSuccecss value) success,
-    required TResult Function(RecoveryScreenStateInitial value) initial,
-    required TResult Function(RecoveryScreenStateLoading value) loading,
+    required TResult Function(RegisterScreenStateFailed value) failed,
+    required TResult Function(RegistrationSuccess value) success,
+    required TResult Function(RegistrationFailed value) initial,
+    required TResult Function(RegistrationLoading value) loading,
   }) {
     return success(this);
   }
@@ -324,10 +320,10 @@ class _$RecoveryScreenStateSuccecss implements RecoveryScreenStateSuccecss {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(RecoveryScreenStateFailed value)? failed,
-    TResult? Function(RecoveryScreenStateSuccecss value)? success,
-    TResult? Function(RecoveryScreenStateInitial value)? initial,
-    TResult? Function(RecoveryScreenStateLoading value)? loading,
+    TResult? Function(RegisterScreenStateFailed value)? failed,
+    TResult? Function(RegistrationSuccess value)? success,
+    TResult? Function(RegistrationFailed value)? initial,
+    TResult? Function(RegistrationLoading value)? loading,
   }) {
     return success?.call(this);
   }
@@ -335,10 +331,10 @@ class _$RecoveryScreenStateSuccecss implements RecoveryScreenStateSuccecss {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(RecoveryScreenStateFailed value)? failed,
-    TResult Function(RecoveryScreenStateSuccecss value)? success,
-    TResult Function(RecoveryScreenStateInitial value)? initial,
-    TResult Function(RecoveryScreenStateLoading value)? loading,
+    TResult Function(RegisterScreenStateFailed value)? failed,
+    TResult Function(RegistrationSuccess value)? success,
+    TResult Function(RegistrationFailed value)? initial,
+    TResult Function(RegistrationLoading value)? loading,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -348,44 +344,40 @@ class _$RecoveryScreenStateSuccecss implements RecoveryScreenStateSuccecss {
   }
 }
 
-abstract class RecoveryScreenStateSuccecss implements RecoveryScreenState {
-  const factory RecoveryScreenStateSuccecss() = _$RecoveryScreenStateSuccecss;
+abstract class RegistrationSuccess implements RegisterScreenState {
+  const factory RegistrationSuccess() = _$RegistrationSuccess;
 }
 
 /// @nodoc
-abstract class _$$RecoveryScreenStateInitialCopyWith<$Res> {
-  factory _$$RecoveryScreenStateInitialCopyWith(
-          _$RecoveryScreenStateInitial value,
-          $Res Function(_$RecoveryScreenStateInitial) then) =
-      __$$RecoveryScreenStateInitialCopyWithImpl<$Res>;
+abstract class _$$RegistrationFailedCopyWith<$Res> {
+  factory _$$RegistrationFailedCopyWith(_$RegistrationFailed value,
+          $Res Function(_$RegistrationFailed) then) =
+      __$$RegistrationFailedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$RecoveryScreenStateInitialCopyWithImpl<$Res>
-    extends _$RecoveryScreenStateCopyWithImpl<$Res,
-        _$RecoveryScreenStateInitial>
-    implements _$$RecoveryScreenStateInitialCopyWith<$Res> {
-  __$$RecoveryScreenStateInitialCopyWithImpl(
-      _$RecoveryScreenStateInitial _value,
-      $Res Function(_$RecoveryScreenStateInitial) _then)
+class __$$RegistrationFailedCopyWithImpl<$Res>
+    extends _$RegisterScreenStateCopyWithImpl<$Res, _$RegistrationFailed>
+    implements _$$RegistrationFailedCopyWith<$Res> {
+  __$$RegistrationFailedCopyWithImpl(
+      _$RegistrationFailed _value, $Res Function(_$RegistrationFailed) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$RecoveryScreenStateInitial implements RecoveryScreenStateInitial {
-  const _$RecoveryScreenStateInitial();
+class _$RegistrationFailed implements RegistrationFailed {
+  const _$RegistrationFailed();
 
   @override
   String toString() {
-    return 'RecoveryScreenState.initial()';
+    return 'RegisterScreenState.initial()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$RecoveryScreenStateInitial);
+        (other.runtimeType == runtimeType && other is _$RegistrationFailed);
   }
 
   @override
@@ -431,10 +423,10 @@ class _$RecoveryScreenStateInitial implements RecoveryScreenStateInitial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(RecoveryScreenStateFailed value) failed,
-    required TResult Function(RecoveryScreenStateSuccecss value) success,
-    required TResult Function(RecoveryScreenStateInitial value) initial,
-    required TResult Function(RecoveryScreenStateLoading value) loading,
+    required TResult Function(RegisterScreenStateFailed value) failed,
+    required TResult Function(RegistrationSuccess value) success,
+    required TResult Function(RegistrationFailed value) initial,
+    required TResult Function(RegistrationLoading value) loading,
   }) {
     return initial(this);
   }
@@ -442,10 +434,10 @@ class _$RecoveryScreenStateInitial implements RecoveryScreenStateInitial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(RecoveryScreenStateFailed value)? failed,
-    TResult? Function(RecoveryScreenStateSuccecss value)? success,
-    TResult? Function(RecoveryScreenStateInitial value)? initial,
-    TResult? Function(RecoveryScreenStateLoading value)? loading,
+    TResult? Function(RegisterScreenStateFailed value)? failed,
+    TResult? Function(RegistrationSuccess value)? success,
+    TResult? Function(RegistrationFailed value)? initial,
+    TResult? Function(RegistrationLoading value)? loading,
   }) {
     return initial?.call(this);
   }
@@ -453,10 +445,10 @@ class _$RecoveryScreenStateInitial implements RecoveryScreenStateInitial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(RecoveryScreenStateFailed value)? failed,
-    TResult Function(RecoveryScreenStateSuccecss value)? success,
-    TResult Function(RecoveryScreenStateInitial value)? initial,
-    TResult Function(RecoveryScreenStateLoading value)? loading,
+    TResult Function(RegisterScreenStateFailed value)? failed,
+    TResult Function(RegistrationSuccess value)? success,
+    TResult Function(RegistrationFailed value)? initial,
+    TResult Function(RegistrationLoading value)? loading,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -466,44 +458,40 @@ class _$RecoveryScreenStateInitial implements RecoveryScreenStateInitial {
   }
 }
 
-abstract class RecoveryScreenStateInitial implements RecoveryScreenState {
-  const factory RecoveryScreenStateInitial() = _$RecoveryScreenStateInitial;
+abstract class RegistrationFailed implements RegisterScreenState {
+  const factory RegistrationFailed() = _$RegistrationFailed;
 }
 
 /// @nodoc
-abstract class _$$RecoveryScreenStateLoadingCopyWith<$Res> {
-  factory _$$RecoveryScreenStateLoadingCopyWith(
-          _$RecoveryScreenStateLoading value,
-          $Res Function(_$RecoveryScreenStateLoading) then) =
-      __$$RecoveryScreenStateLoadingCopyWithImpl<$Res>;
+abstract class _$$RegistrationLoadingCopyWith<$Res> {
+  factory _$$RegistrationLoadingCopyWith(_$RegistrationLoading value,
+          $Res Function(_$RegistrationLoading) then) =
+      __$$RegistrationLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$RecoveryScreenStateLoadingCopyWithImpl<$Res>
-    extends _$RecoveryScreenStateCopyWithImpl<$Res,
-        _$RecoveryScreenStateLoading>
-    implements _$$RecoveryScreenStateLoadingCopyWith<$Res> {
-  __$$RecoveryScreenStateLoadingCopyWithImpl(
-      _$RecoveryScreenStateLoading _value,
-      $Res Function(_$RecoveryScreenStateLoading) _then)
+class __$$RegistrationLoadingCopyWithImpl<$Res>
+    extends _$RegisterScreenStateCopyWithImpl<$Res, _$RegistrationLoading>
+    implements _$$RegistrationLoadingCopyWith<$Res> {
+  __$$RegistrationLoadingCopyWithImpl(
+      _$RegistrationLoading _value, $Res Function(_$RegistrationLoading) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$RecoveryScreenStateLoading implements RecoveryScreenStateLoading {
-  const _$RecoveryScreenStateLoading();
+class _$RegistrationLoading implements RegistrationLoading {
+  const _$RegistrationLoading();
 
   @override
   String toString() {
-    return 'RecoveryScreenState.loading()';
+    return 'RegisterScreenState.loading()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$RecoveryScreenStateLoading);
+        (other.runtimeType == runtimeType && other is _$RegistrationLoading);
   }
 
   @override
@@ -549,10 +537,10 @@ class _$RecoveryScreenStateLoading implements RecoveryScreenStateLoading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(RecoveryScreenStateFailed value) failed,
-    required TResult Function(RecoveryScreenStateSuccecss value) success,
-    required TResult Function(RecoveryScreenStateInitial value) initial,
-    required TResult Function(RecoveryScreenStateLoading value) loading,
+    required TResult Function(RegisterScreenStateFailed value) failed,
+    required TResult Function(RegistrationSuccess value) success,
+    required TResult Function(RegistrationFailed value) initial,
+    required TResult Function(RegistrationLoading value) loading,
   }) {
     return loading(this);
   }
@@ -560,10 +548,10 @@ class _$RecoveryScreenStateLoading implements RecoveryScreenStateLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(RecoveryScreenStateFailed value)? failed,
-    TResult? Function(RecoveryScreenStateSuccecss value)? success,
-    TResult? Function(RecoveryScreenStateInitial value)? initial,
-    TResult? Function(RecoveryScreenStateLoading value)? loading,
+    TResult? Function(RegisterScreenStateFailed value)? failed,
+    TResult? Function(RegistrationSuccess value)? success,
+    TResult? Function(RegistrationFailed value)? initial,
+    TResult? Function(RegistrationLoading value)? loading,
   }) {
     return loading?.call(this);
   }
@@ -571,10 +559,10 @@ class _$RecoveryScreenStateLoading implements RecoveryScreenStateLoading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(RecoveryScreenStateFailed value)? failed,
-    TResult Function(RecoveryScreenStateSuccecss value)? success,
-    TResult Function(RecoveryScreenStateInitial value)? initial,
-    TResult Function(RecoveryScreenStateLoading value)? loading,
+    TResult Function(RegisterScreenStateFailed value)? failed,
+    TResult Function(RegistrationSuccess value)? success,
+    TResult Function(RegistrationFailed value)? initial,
+    TResult Function(RegistrationLoading value)? loading,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -584,6 +572,6 @@ class _$RecoveryScreenStateLoading implements RecoveryScreenStateLoading {
   }
 }
 
-abstract class RecoveryScreenStateLoading implements RecoveryScreenState {
-  const factory RecoveryScreenStateLoading() = _$RecoveryScreenStateLoading;
+abstract class RegistrationLoading implements RegisterScreenState {
+  const factory RegistrationLoading() = _$RegistrationLoading;
 }

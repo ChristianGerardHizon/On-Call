@@ -2,15 +2,14 @@ import 'package:authentication_package/authentication_package.dart';
 import 'package:core_package/core_package.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:on_call/core/providers/providers.dart';
-
-import '../../../main.dart';
+import 'package:on_call/providers.dart';
 
 final authProvider = StateNotifierProvider<AuthNotifier, AuthState>((ref) {
-  return AuthNotifier(ref.watch(authRepoProvider));
+  return AuthNotifier(ref.watch(authRepoProd));
 });
 
 class AuthNotifier extends StateNotifier<AuthState> {
-  final AuthDesignRepository _auth;
+  final AuthRepository _auth;
 
   AuthNotifier(this._auth) : super(const AuthState());
 
