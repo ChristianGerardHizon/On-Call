@@ -5,6 +5,7 @@ import 'package:icons_flutter/icons_flutter.dart';
 class SearchAppBar extends ConsumerWidget implements PreferredSizeWidget {
   final double appBarHeight = 56;
   final bool isSearching;
+  final String title;
   final List<Widget>? actions;
   final Function()? onCancel;
   final Function(String)? onChange;
@@ -14,6 +15,7 @@ class SearchAppBar extends ConsumerWidget implements PreferredSizeWidget {
     super.key,
     this.isSearching = false,
     this.actions,
+    required this.title,
     this.onCancel,
     this.onChange,
     this.onSearch,
@@ -47,7 +49,7 @@ class SearchAppBar extends ConsumerWidget implements PreferredSizeWidget {
                 ),
               ),
             )
-          : const Text('Service Providers'),
+          : Text(title),
       actions: isSearching ? null : actions,
     );
   }

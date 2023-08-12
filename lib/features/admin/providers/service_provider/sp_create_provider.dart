@@ -1,8 +1,6 @@
 import 'package:admin_package/admin_package.dart';
-import 'package:core_package/core_package.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:on_call/main.dart';
 import 'package:on_call/providers.dart';
 
 part 'sp_create_provider.freezed.dart';
@@ -34,5 +32,5 @@ class AuthNotifier extends StateNotifier<SpCreateState> {
 // Riverpod provider for authentication
 final spCreateProvider =
     StateNotifierProvider<AuthNotifier, SpCreateState>((ref) {
-  return AuthNotifier(ref.read(adminRepoProd));
+  return AuthNotifier(ref.read(serviceProviderRepoProd));
 });

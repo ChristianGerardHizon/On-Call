@@ -6,19 +6,20 @@ import 'package:on_call/providers.dart';
 
 import '../../../../core/typedefs/typedefs.dart';
 
-final spListProvider = AsyncNotifierProvider<ServiceProviderListNotifier,
-    ServiceProviderUserRecord>(() => ServiceProviderListNotifier());
+final serviceListScreenProd =
+    AsyncNotifierProvider<_ServiceScreenListNotifier, ServiceRecord>(
+        () => _ServiceScreenListNotifier());
 
-final spListSearchProvider = StateProvider.autoDispose<bool>((ref) => false);
+final serviceListScreenProvider =
+    StateProvider.autoDispose<bool>((ref) => false);
 
-class ServiceProviderListNotifier
-    extends AsyncNotifier<ServiceProviderUserRecord> {
-  ServiceProviderListNotifier();
+class _ServiceScreenListNotifier extends AsyncNotifier<ServiceRecord> {
+  _ServiceScreenListNotifier();
 
   @override
-  Future<ServiceProviderUserRecord> build() async {
-    final repo = ref.read(serviceProviderRepoProd);
-    final successOrFail = await repo.getServiceProviderUsers();
+  Future<ServiceRecord> build() async {
+    final repo = ref.read(serviceRepoProd);
+    final successOrFail = await repo.list();
     return successOrFail.fold(
       (l) => Future.error(l),
       (r) => r,
@@ -27,8 +28,8 @@ class ServiceProviderListNotifier
 
   Future<void> refresh({PageOptions? page}) async {
     state = const AsyncValue.loading();
-    final repo = ref.read(serviceProviderRepoProd);
-    final successOrFail = await repo.getServiceProviderUsers(page: page);
+    final repo = ref.read(serviceRepoProd);
+    final successOrFail = await repo.list(page: page);
     state = successOrFail.fold(
       (l) => AsyncValue.error(l, StackTrace.current),
       (r) => AsyncValue.data(r),
@@ -37,11 +38,9 @@ class ServiceProviderListNotifier
 
   Future<void> search(String query) async {
     state = const AsyncValue.loading();
-    final repo = ref.read(serviceProviderRepoProd);
-    final page = PageOptions(
-        filter:
-            'email ~ "$query" || firstName ~ "$query" || lastName ~ "$query"');
-    final successOrFail = await repo.getServiceProviderUsers(page: page);
+    final repo = ref.read(serviceRepoProd);
+    final page = PageOptions(filter: 'name ~ "$query" ');
+    final successOrFail = await repo.list(page: page);
     state = successOrFail.fold(
       (l) => AsyncValue.error(l, StackTrace.current),
       (r) => AsyncValue.data(r.copyWith(searchString: query)),
@@ -58,8 +57,8 @@ class ServiceProviderListNotifier
     final items = data.value.items;
 
     state = const AsyncValue.loading();
-    final repo = ref.read(serviceProviderRepoProd);
-    final successOrFail = await repo.getServiceProviderUsers(page: page);
+    final repo = ref.read(serviceRepoProd);
+    final successOrFail = await repo.list(page: page);
     state = successOrFail.fold(
       (l) => AsyncValue.error(l, StackTrace.current),
       (r) => AsyncValue.data(r.copyWith(items: [...items, ...r.items])),

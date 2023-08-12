@@ -1,5 +1,4 @@
 import 'package:authentication_package/authentication_package.dart';
-import 'package:core_package/core_package.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:on_call/core/providers/providers.dart';

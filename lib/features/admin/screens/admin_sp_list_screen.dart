@@ -23,6 +23,7 @@ class AdminSPListScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: SearchAppBar(
+        title: 'Service Providers',
         isSearching: ref.watch(spListSearchProvider),
         onSearch: (val) {
           notifier.search(val);
@@ -132,17 +133,14 @@ class AdminSPListScreen extends ConsumerWidget {
                           ),
                           subtitle: SizedBox(
                             height: 25,
-                            child: Row(
-                                // mainAxisAlignment: MainAxisAlignment.end,
-                                // crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(item.isPublic ? 'Public' : 'Private'),
-                                  const SizedBox(width: 4),
-                                  const Icon(MaterialCommunityIcons.circle,
-                                      size: 5),
-                                  const SizedBox(width: 4),
-                                  Text(item.email),
-                                ]),
+                            child: Row(children: [
+                              Text(item.isPublic ? 'Public' : 'Private'),
+                              const SizedBox(width: 4),
+                              const Icon(MaterialCommunityIcons.circle,
+                                  size: 5),
+                              const SizedBox(width: 4),
+                              Text(item.email),
+                            ]),
                           ),
                           trailing: IconButton(
                             icon: const Icon(
@@ -152,9 +150,9 @@ class AdminSPListScreen extends ConsumerWidget {
                         ),
                         if (isLast)
                           Padding(
-                            padding: const EdgeInsets.only(top: 12),
+                            padding: const EdgeInsets.only(top: 12, bottom: 10),
                             child: Text(
-                              'Page ${record.page} of ${record.totalItems}',
+                              'Page ${record.page} of ${record.totalPages}',
                               style: const TextStyle(
                                 color: Colors.grey,
                               ),

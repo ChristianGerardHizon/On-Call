@@ -30,8 +30,10 @@ final coreRepoProd = Provider((ref) {
 });
 final authRepoProd =
     Provider((ref) => AuthRepositoryImpl(ref.read(coreRepoProd)));
-final adminRepoProd =
+final serviceProviderRepoProd =
     Provider((ref) => AdminRepositoryImpl(ref.read(coreRepoProd)));
+final serviceRepoProd =
+    Provider((ref) => ServiceRepositoryImpl(ref.read(coreRepoProd)));
 
 /*
 
@@ -45,13 +47,25 @@ final registerUseCase =
     Provider((ref) => RegisterUseCase(ref.read(authRepoProd)));
 
 // admin
-final createSPUseCase =
-    Provider((ref) => CreateServiceProviderUseCase(ref.read(adminRepoProd)));
-final getSPUseCase =
-    Provider((ref) => GetServiceProviderUseCase(ref.read(adminRepoProd)));
-final listSPUseCase =
-    Provider((ref) => GetServiceProvidersUseCase(ref.read(adminRepoProd)));
-final getSPUserUseCase =
-    Provider((ref) => GetServiceProviderUserUseCase(ref.read(adminRepoProd)));
-final listSPUserUseCase =
-    Provider((ref) => GetServiceProviderUsersUseCase(ref.read(adminRepoProd)));
+final createSPUseCase = Provider(
+    (ref) => CreateServiceProviderUseCase(ref.read(serviceProviderRepoProd)));
+final getSPUseCase = Provider(
+    (ref) => GetServiceProviderUseCase(ref.read(serviceProviderRepoProd)));
+final listSPUseCase = Provider(
+    (ref) => GetServiceProvidersUseCase(ref.read(serviceProviderRepoProd)));
+final getSPUserUseCase = Provider(
+    (ref) => GetServiceProviderUserUseCase(ref.read(serviceProviderRepoProd)));
+final listSPUserUseCase = Provider(
+    (ref) => GetServiceProviderUsersUseCase(ref.read(serviceProviderRepoProd)));
+
+// service provider
+final createServiceUseCase =
+    Provider((ref) => CreateServiceUseCase(ref.read(serviceRepoProd)));
+final getServiceUseCase =
+    Provider((ref) => GetServiceUseCase(ref.read(serviceRepoProd)));
+final listServiceUseCase =
+    Provider((ref) => ListServiceUseCase(ref.read(serviceRepoProd)));
+final deleteServiceUseCase =
+    Provider((ref) => DeleteServiceUseCase(ref.read(serviceRepoProd)));
+final updateServiceUseCase =
+    Provider((ref) => UpdateServiceUseCase(ref.read(serviceRepoProd)));
