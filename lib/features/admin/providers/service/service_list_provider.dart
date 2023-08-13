@@ -6,7 +6,7 @@ import 'package:on_call/providers.dart';
 
 import '../../../../core/typedefs/typedefs.dart';
 
-final serviceListScreenProd =
+final serviceListProd =
     AsyncNotifierProvider<_ServiceScreenListNotifier, ServiceRecord>(
         () => _ServiceScreenListNotifier());
 

@@ -131,16 +131,37 @@ class AdminSPListScreen extends ConsumerWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          subtitle: SizedBox(
-                            height: 25,
-                            child: Row(children: [
-                              Text(item.isPublic ? 'Public' : 'Private'),
-                              const SizedBox(width: 4),
-                              const Icon(MaterialCommunityIcons.circle,
-                                  size: 5),
-                              const SizedBox(width: 4),
-                              Text(item.email),
-                            ]),
+                          subtitle: RichText(
+                            overflow: TextOverflow.ellipsis,
+                            text: TextSpan(
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                              ),
+                              children: [
+                                TextSpan(
+                                    text: item.isActive ? 'Active' : 'InActive',
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.w400)),
+                                const WidgetSpan(
+                                  child: SizedBox(
+                                    height: 20,
+                                    width: 15,
+                                    child: Center(
+                                      child: Icon(
+                                        Icons.circle,
+                                        color: Colors.grey,
+                                        size: 5,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                TextSpan(
+                                    text: item.email,
+                                    style:
+                                        TextStyle(fontStyle: FontStyle.italic)),
+                              ],
+                            ),
                           ),
                           trailing: IconButton(
                             icon: const Icon(

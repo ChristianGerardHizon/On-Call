@@ -31,9 +31,7 @@ class AdminSPViewScreen extends ConsumerWidget {
         title: const Text('Service Provider'),
         actions: [
           TextButton(
-            onPressed: () {
-              notifier.getServiceProvider(id!);
-            },
+            onPressed: () => notifier.getServiceProvider(id!),
             child: const Text('Edit'),
           ),
         ]);
@@ -63,9 +61,6 @@ class AdminSPViewScreen extends ConsumerWidget {
         data: (sp) {
           // update service provider
           if (sp == null) {
-            // WidgetsBinding.instance.addPostFrameCallback((_) {
-            //   notifier.getServiceProvider(id!);
-            // });
             return Center(
               child: Column(
                 children: [
@@ -79,22 +74,30 @@ class AdminSPViewScreen extends ConsumerWidget {
             );
           }
 
-          const picture =
-              'https://lh3.googleusercontent.com/a-/AAuE7mChgTiAe-N8ibcM3fB_qvGdl2vQ9jvjYv0iOOjB=s96-c';
-
-          return Padding(
-            padding: const EdgeInsets.only(top: 8),
-            child: Column(
+          const defaultTileStyle = TextStyle(
+            fontWeight: FontWeight.bold,
+          );
+          return RefreshIndicator(
+            onRefresh: () => notifier.getServiceProvider(id!),
+            child: ListView(
+              padding: const EdgeInsets.only(top: 8),
               children: [
+                ///
+                /// Header
+                ///
                 Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: Row(
                     children: [
-                      const CircleAvatar(
-                        radius: 60,
-                        backgroundImage: NetworkImage(picture),
+                      LetterAvatar(
+                        radius: 40,
+                        text: sp.publicName,
+                        textStyle: const TextStyle(
+                          fontSize: 25,
+                          color: Colors.white,
+                        ),
                       ),
-                      const SizedBox(width: 40),
+                      const SizedBox(width: 20),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -102,17 +105,60 @@ class AdminSPViewScreen extends ConsumerWidget {
                           Text(
                             sp.publicName,
                             style: const TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 22),
+                                fontWeight: FontWeight.bold, fontSize: 18),
                           ),
                           Text(
                             sp.email,
-                            style: const TextStyle(fontWeight: FontWeight.bold),
+                            style: const TextStyle(fontSize: 12),
                           ),
                         ],
                       )
                     ],
                   ),
-                )
+                ),
+
+                ///
+                /// Additional Information
+                ///
+                ListTile(
+                  subtitle: const Text('First Name'),
+                  title: Text(
+                    sp.firstName,
+                    style: defaultTileStyle,
+                  ),
+                ),
+
+                ListTile(
+                  subtitle: const Text('Last Name'),
+                  title: Text(
+                    sp.lastName,
+                    style: defaultTileStyle,
+                  ),
+                ),
+
+                ListTile(
+                  subtitle: const Text('Email'),
+                  title: Text(
+                    sp.email,
+                    style: defaultTileStyle,
+                  ),
+                ),
+
+                ListTile(
+                  subtitle: const Text('Status'),
+                  title: Text(
+                    sp.isActive ? 'Active' : 'Pending',
+                    style: defaultTileStyle,
+                  ),
+                ),
+
+                ListTile(
+                  subtitle: const Text('Visibility'),
+                  title: Text(
+                    sp.isPublic ? 'Public' : 'Private',
+                    style: defaultTileStyle,
+                  ),
+                ),
               ],
             ),
           );

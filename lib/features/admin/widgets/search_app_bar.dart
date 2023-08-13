@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:icons_flutter/icons_flutter.dart';
 
-class SearchAppBar extends ConsumerWidget implements PreferredSizeWidget {
+class SearchAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double appBarHeight = 56;
   final bool isSearching;
   final String title;
@@ -25,7 +24,7 @@ class SearchAppBar extends ConsumerWidget implements PreferredSizeWidget {
   Size get preferredSize => Size.fromHeight(appBarHeight);
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     return AppBar(
       foregroundColor: Colors.white,
       elevation: isSearching ? 2 : null,

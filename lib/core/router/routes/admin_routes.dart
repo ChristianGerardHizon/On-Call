@@ -68,9 +68,9 @@ List<RouteBase> buildAdminRoutes(ProviderRef<GoRouter> ref) {
 
     // services
     GoRoute(
-      path: AdminCreateServiceScreen.route,
+      path: AdminServiceCreateScreen.route,
       pageBuilder: (context, state) {
-        return const NoTransitionPage(child: AdminCreateServiceScreen());
+        return const NoTransitionPage(child: AdminServiceCreateScreen());
       },
     ),
 

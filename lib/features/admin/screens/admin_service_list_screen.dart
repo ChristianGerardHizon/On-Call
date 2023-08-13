@@ -8,6 +8,9 @@ import 'package:on_call/features/admin/widgets/widgets.dart';
 import '../providers/providers.dart';
 import 'screens.dart';
 
+const _createScreen = AdminServiceCreateScreen.route;
+const _viewScreen = AdminServiceViewScreen.route;
+
 class AdminServiceListScreen extends ConsumerWidget {
   static const String route = '/admin/services';
   const AdminServiceListScreen({super.key});
@@ -15,7 +18,7 @@ class AdminServiceListScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final router = GoRouter.of(context);
-    final prod = serviceListScreenProd;
+    final prod = serviceListProd;
     final state = ref.watch(prod);
 
     final notifier = ref.read(prod.notifier);
@@ -39,7 +42,9 @@ class AdminServiceListScreen extends ConsumerWidget {
           ),
           const SizedBox(width: 8),
           IconButton(
-            onPressed: () => router.go(AdminCreateServiceScreen.route),
+            onPressed: () {
+              router.go(_createScreen);
+            },
             icon: const Icon(MaterialCommunityIcons.plus_circle),
           ),
           const SizedBox(width: 15),
@@ -64,7 +69,7 @@ class AdminServiceListScreen extends ConsumerWidget {
                   child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text('No Service Provider Found'),
+                  const Text('No Service Found'),
                   TextButton.icon(
                     label: const Text('Refresh list'),
                     onPressed: notifier.refresh,
@@ -110,18 +115,22 @@ class AdminServiceListScreen extends ConsumerWidget {
                             ),
                           ),
                         ListTile(
-                          onTap: () => router.go(AdminServiceViewScreen.route,
-                              extra: {'id': item.id}),
+                          onTap: () =>
+                              router.go(_viewScreen, extra: {'id': item.id}),
                           visualDensity: VisualDensity.standard,
                           title: Text(
                             item.name,
+                            overflow: TextOverflow.ellipsis,
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           subtitle: SizedBox(
                             height: 25,
-                            child: Text(item.isPublic ? 'Public' : 'Private'),
+                            child: Text(
+                              item.isPublic ? 'Public' : 'Private',
+                              overflow: TextOverflow.ellipsis,
+                            ),
                           ),
                           trailing: IconButton(
                             icon: const Icon(
