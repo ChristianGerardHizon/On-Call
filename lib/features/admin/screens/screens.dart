@@ -8,4 +8,4 @@ export 'admin_service_view_screen.dart';
 export 'admin_sp_create_screen.dart';
 export 'admin_sp_list_screen.dart';
 export 'admin_sp_view_screen.dart';
-export 'admin_support_screen.dart';
+export './support/support.dart';

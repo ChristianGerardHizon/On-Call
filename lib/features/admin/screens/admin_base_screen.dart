@@ -66,7 +66,7 @@ class AdminBaseScreen extends StatelessWidget {
   int _calculateSelectedIndex(BuildContext context) {
     final String location = GoRouterState.of(context).uri.toString();
 
-    if (location.startsWith(AdminSupportScreen.route)) {
+    if (location.startsWith(AdminSupportListScreen.route)) {
       return 1;
     }
     if (location.startsWith(AdminServiceListScreen.route)) {
@@ -90,7 +90,7 @@ class AdminBaseScreen extends StatelessWidget {
         GoRouter.of(context).go(AdminDashboardScreen.route);
         break;
       case 1:
-        GoRouter.of(context).go(AdminSupportScreen.route);
+        GoRouter.of(context).go(AdminSupportListScreen.route);
         break;
       case 2:
         GoRouter.of(context).go(AdminServiceListScreen.route);

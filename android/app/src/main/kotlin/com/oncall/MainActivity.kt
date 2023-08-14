@@ -1,4 +1,4 @@
-package com.example.on_call
+package com.oncall
 
 import io.flutter.embedding.android.FlutterActivity
 

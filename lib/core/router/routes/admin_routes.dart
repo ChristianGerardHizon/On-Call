@@ -23,9 +23,9 @@ List<RouteBase> buildAdminRoutes(ProviderRef<GoRouter> ref) {
           },
         ),
         GoRoute(
-          path: AdminSupportScreen.route,
+          path: AdminSupportListScreen.route,
           pageBuilder: (context, state) {
-            return const NoTransitionPage(child: AdminSupportScreen());
+            return const NoTransitionPage(child: AdminSupportListScreen());
           },
         ),
         GoRoute(
@@ -49,7 +49,27 @@ List<RouteBase> buildAdminRoutes(ProviderRef<GoRouter> ref) {
       ],
     ),
 
-    // service providers
+    ///
+    /// support
+    ///
+    GoRoute(
+      path: AdminSupportListScreen.route,
+      pageBuilder: (context, state) {
+        return const NoTransitionPage(child: AdminSupportListScreen());
+      },
+    ),
+    GoRoute(
+      path: AdminSupportViewScreen.route,
+      pageBuilder: (context, state) {
+        final extra = state.extra as Map<String, dynamic>;
+        final id = extra['id'] as String?;
+        return NoTransitionPage(child: AdminSupportViewScreen(id: id));
+      },
+    ),
+
+    ///
+    /// service providers
+    ///
     GoRoute(
       path: AdminSPCreateScreen.route,
       pageBuilder: (context, state) {
@@ -66,7 +86,9 @@ List<RouteBase> buildAdminRoutes(ProviderRef<GoRouter> ref) {
       },
     ),
 
-    // services
+    ///
+    /// services
+    ///
     GoRoute(
       path: AdminServiceCreateScreen.route,
       pageBuilder: (context, state) {

@@ -12,6 +12,7 @@ class FormTextField extends StatelessWidget {
   final ValidatorItem? validators;
   final int? minLines;
   final int? maxLines;
+  final List<String>? autofillHints;
 
   const FormTextField({
     super.key,
@@ -22,6 +23,7 @@ class FormTextField extends StatelessWidget {
     this.padding,
     this.minLines,
     this.maxLines,
+    this.autofillHints,
   });
 
   @override
@@ -30,6 +32,7 @@ class FormTextField extends StatelessWidget {
       padding: padding ?? const EdgeInsets.only(bottom: 20),
       child: FormBuilderTextField(
         name: name,
+        autofillHints: autofillHints,
         obscureText: obscure == null ? false : obscure!,
         decoration: InputDecoration(
           label: Text(label),

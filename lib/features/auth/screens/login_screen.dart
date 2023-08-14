@@ -13,6 +13,8 @@ import 'screens.dart';
 final _formKey = GlobalKey<FormBuilderState>();
 
 class LoginScreen extends ConsumerWidget {
+  static const String route = '/login';
+
   const LoginScreen({super.key, this.returnURL});
 
   final String? returnURL;
@@ -48,6 +50,7 @@ class LoginScreen extends ConsumerWidget {
     return FormBuilder(
       key: _formKey,
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           title: const Text('Login'),
           leading: IconButton(
@@ -87,6 +90,7 @@ class LoginScreen extends ConsumerWidget {
                       FormTextField(
                           name: 'email',
                           label: 'Email',
+                          autofillHints: const [AutofillHints.email],
                           validators: [
                             FormBuilderValidators.required(),
                             FormBuilderValidators.email(),
@@ -96,6 +100,7 @@ class LoginScreen extends ConsumerWidget {
                       FormTextField(
                           name: 'password',
                           label: 'Password',
+                          autofillHints: const [AutofillHints.password],
                           padding: const EdgeInsets.only(bottom: 10),
                           obscure: true,
                           validators: [

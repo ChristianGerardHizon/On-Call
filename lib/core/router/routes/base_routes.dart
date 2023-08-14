@@ -8,7 +8,7 @@ List<RouteBase> baseRoutes = [
   // authentication routes
   GoRoute(
     name: 'login',
-    path: '/login',
+    path: LoginScreen.route,
     builder: (context, state) {
       state.uri.queryParameters;
       final params = state.uri.queryParameters;
@@ -18,17 +18,18 @@ List<RouteBase> baseRoutes = [
     },
     routes: [
       GoRoute(
-        path: RegistrationScreen.route.replaceAll('/login/', ''),
+        path: RegistrationScreen.route.replaceAll('${LoginScreen.route}/', ''),
         builder: (context, state) => const RegistrationScreen(),
       ),
       GoRoute(
-        path: RegistrationScreen.routeAsSP.replaceAll('/login/', ''),
+        path: RegistrationScreen.routeAsSP
+            .replaceAll('${LoginScreen.route}/', ''),
         builder: (context, state) => const RegistrationScreen(
           userType: UserType.serviceProvider,
         ),
       ),
       GoRoute(
-        path: RecoveryScreen.route.replaceAll('/login/', ''),
+        path: RecoveryScreen.route.replaceAll('${LoginScreen.route}/', ''),
         builder: (context, state) => const RecoveryScreen(),
       ),
     ],
@@ -47,6 +48,17 @@ List<RouteBase> baseRoutes = [
     builder: (context, state) => const Center(
       child: Text('2FA'),
     ),
+  ),
+
+  GoRoute(
+    path: ChangePasswordScreen.route,
+    builder: (context, state) {
+      state.uri.queryParameters;
+      final params = state.uri.queryParameters;
+      final rtURL = params['returnURL'];
+
+      return ChangePasswordScreen(returnURL: rtURL);
+    },
   ),
 
   // splash screen

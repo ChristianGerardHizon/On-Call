@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:on_call/core/providers/app/app.dart';
 import 'package:on_call/core/providers/auth/auth.dart';
 import 'package:on_call/core/router/router.dart';
-import 'package:on_call/features/auth/screens/logout_screen.dart';
+import 'package:on_call/features/auth/screens/screens.dart';
 
 import '../../features/common/screens/screens.dart';
 
@@ -23,6 +23,15 @@ final routerProvider = Provider<GoRouter>((ref) {
     errorBuilder: (context, state) => const NotFoundScreen(),
   );
 });
+
+// routes that cen be accessed even if the user is not logged in
+final _authRoutes = [
+  LoginScreen.route,
+  LogoutScreen.route,
+  RegistrationScreen.route,
+  EditProfileScreen.route,
+  ChangePasswordScreen.route,
+];
 
 globalRedirect(
   BuildContext context,
@@ -47,6 +56,10 @@ globalRedirect(
 
   if (isLoggedIn && isServiceProvider && user.isActive == false) {
     return '/pending';
+  }
+
+  if (_authRoutes.contains(fullPath)) {
+    return null;
   }
 
   if (isLoggedIn && isAdmin && !segments.contains('admin')) {

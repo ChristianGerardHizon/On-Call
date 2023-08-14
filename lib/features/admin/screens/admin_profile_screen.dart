@@ -3,6 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:icons_flutter/icons_flutter.dart';
 import 'package:on_call/core/providers/auth/auth.dart';
+import 'package:on_call/core/widgets/widgets.dart';
+import 'package:on_call/features/auth/screens/screens.dart';
+
+final _changePasswordRoute = ChangePasswordScreen.route;
 
 class AdminProfileScreen extends StatelessWidget {
   static const String route = '/admin/profile';
@@ -12,6 +16,9 @@ class AdminProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final router = GoRouter.of(context);
 
+    final returnURL = Uri.parse(_changePasswordRoute).replace(
+      queryParameters: {'returnURL': route},
+    );
     return Scaffold(
       appBar: AppBar(title: const Text('Profile')),
       body: ListView(
@@ -24,14 +31,17 @@ class AdminProfileScreen extends StatelessWidget {
           const AdminProfileTile(title: 'Security Options'),
 
           // option 2
-          const AdminProfileTile(title: 'Change Password'),
+          AdminProfileTile(
+            title: 'Change Password',
+            onTap: () => router.go(returnURL.toString()),
+          ),
 
           // option 3
           AdminProfileTile(
             hasTrailing: false,
             icon: const Icon(MaterialCommunityIcons.logout),
             title: 'Logout',
-            onTap: () => router.go('/logout'),
+            onTap: () => router.go(LogoutScreen.route),
           ),
         ],
       ),
@@ -44,18 +54,16 @@ class AccountTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    const picture =
-        'https://lh3.googleusercontent.com/a-/AAuE7mChgTiAe-N8ibcM3fB_qvGdl2vQ9jvjYv0iOOjB=s96-c';
-
     final profile = ref.read(authProvider).user!;
 
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Row(
         children: [
-          const CircleAvatar(
+          LetterAvatar(
             radius: 40,
-            backgroundImage: NetworkImage(picture),
+            text: profile.firstName,
+            textStyle: const TextStyle(color: Colors.white, fontSize: 24),
           ),
           const SizedBox(width: 18),
           Column(
