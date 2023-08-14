@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:on_call/core/constants/constants.dart';
 
 import '../../../core/providers/providers.dart';
 
@@ -23,7 +24,7 @@ class SplashScreen extends ConsumerWidget {
     } else {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         Future.wait([
-          Future.delayed(const Duration(seconds: 2)),
+          Future.delayed(const Duration(seconds: 3)),
           authProd.getAuth(),
         ]).then((value) {
           appProd.initialize(true);
@@ -31,9 +32,19 @@ class SplashScreen extends ConsumerWidget {
       });
     }
 
-    return const Scaffold(
-      body: Center(
-        child: CircularProgressIndicator(),
+    return Scaffold(
+      body: DecoratedBox(
+        decoration: BoxDecoration(color: Theme.of(context).primaryColor),
+        child: Center(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(Assets.icons.iconTransparent.path, width: 250),
+            const CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+            ),
+          ],
+        )),
       ),
     );
   }

@@ -17,15 +17,15 @@ class AdminSupportListScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final router = GoRouter.of(context);
-    final prod = serviceListProd;
+    final prod = supportListScreenProd;
     final state = ref.watch(prod);
 
     final notifier = ref.read(prod.notifier);
-    final searchNotifier = ref.watch(serviceListScreenProvider.notifier);
+    final searchNotifier = ref.watch(supportListScreenProvider.notifier);
 
     return Scaffold(
       appBar: SearchAppBar(
-        title: 'Services',
+        title: 'Support Tickets',
         isSearching: ref.watch(serviceListScreenProvider),
         onSearch: (val) {
           notifier.search(val);
@@ -36,17 +36,11 @@ class AdminSupportListScreen extends ConsumerWidget {
         },
         actions: [
           IconButton(
+            tooltip: 'Search a Ticket',
             onPressed: () => {searchNotifier.update((state) => true)},
-            icon: const Icon(MaterialCommunityIcons.account_search),
+            icon: const Icon(MaterialCommunityIcons.magnify),
           ),
           const SizedBox(width: 8),
-          IconButton(
-            onPressed: () {
-              router.go(_createScreen);
-            },
-            icon: const Icon(MaterialCommunityIcons.plus_circle),
-          ),
-          const SizedBox(width: 15),
         ],
       ),
       body: RefreshIndicator(
@@ -68,7 +62,7 @@ class AdminSupportListScreen extends ConsumerWidget {
                   child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text('No Service Found'),
+                  const Text('No Tickets Found'),
                   TextButton.icon(
                     label: const Text('Refresh list'),
                     onPressed: notifier.refresh,

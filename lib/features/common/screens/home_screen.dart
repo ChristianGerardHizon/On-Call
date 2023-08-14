@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:icons_flutter/icons_flutter.dart';
 
 import '../../../core/providers/auth/auth.dart';
 import '../providers/providers.dart';
@@ -32,37 +33,47 @@ class HomeScreen extends ConsumerWidget {
     } else {
       return Scaffold(
         appBar: AppBar(
-          title: const Text('Home Page'),
+          title: ListTile(
+            onTap: () {},
+            title: const Text('123 Random Address Location',
+                overflow: TextOverflow.ellipsis),
+            subtitle: const Text('General Santos City'),
+          ),
+          actions: [
+            const SizedBox(width: 8),
+            IconButton(
+              tooltip: 'Go to login',
+              onPressed: () => router.go('/login'),
+              icon: const Icon(MaterialCommunityIcons.account_circle, size: 30),
+            ),
+            const SizedBox(width: 15),
+          ],
         ),
         body: Center(
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                const Text('Select a service'),
+                const SizedBox(height: 4),
                 const TextField(
                   decoration: InputDecoration(
-                    hintText: 'Enter your city',
+                    border: OutlineInputBorder(),
+                    hintText: 'Place holder for services',
                   ),
                 ),
                 const SizedBox(height: 20),
-                const TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Enter Service',
+                SizedBox(
+                  width: double.maxFinite,
+                  height: 40,
+                  child: ElevatedButton(
+                    onPressed: toRefresh,
+                    child: const Text('Find Nearest'),
                   ),
                 ),
                 const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: toRefresh,
-                  child: const Text('Search'),
-                ),
-                const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    router.go('/login');
-                  },
-                  child: const Text('Login'),
-                )
               ],
             ),
           ),

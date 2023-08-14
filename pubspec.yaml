@@ -35,8 +35,9 @@ dependencies:
   webview_flutter: ^4.2.2
 
 dev_dependencies:
-  build_runner: ^2.4.6
-  flutter_launcher_icons: ^0.13.1
+  build_runner:
+  flutter_gen_runner:
+  flutter_launcher_icons:
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
@@ -45,6 +46,12 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/icons/
+
+flutter_gen:
+  output: lib/core/constants/ # Optional (default: lib/gen/)
+  line_length: 80 # Optional (default: 80)
 
 scripts:
   pre-build: version update-pubspec
@@ -52,13 +59,13 @@ scripts:
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/icon/icon.jpeg"
+  image_path: "assets/icons/icon.jpeg"
   web:
     generate: true
-    image_path: "assets/icon/icon.jpeg"
+    image_path: "assets/icons/icon.jpeg"
   windows:
     generate: true
-    image_path: "assets/icon/icon.jpeg"
+    image_path: "assets/icons/icon.jpeg"
   macos:
     generate: true
-    image_path: "assets/icon/icon.jpeg"
+    image_path: "assets/icons/icon.jpeg"

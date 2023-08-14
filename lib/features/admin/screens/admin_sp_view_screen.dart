@@ -30,10 +30,10 @@ class AdminSPViewScreen extends ConsumerWidget {
         ),
         title: const Text('Service Provider'),
         actions: [
-          TextButton(
-            onPressed: () => notifier.getServiceProvider(id!),
-            child: const Text('Edit'),
-          ),
+          // TextButton(
+          //   onPressed: () => notifier.getServiceProvider(id!),
+          //   child: const Text('Edit'),
+          // ),
         ]);
     if (id == null) {
       return Scaffold(

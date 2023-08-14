@@ -43,6 +43,19 @@ class RegistrationScreen extends ConsumerWidget {
       return '';
     }
 
+    Widget buildFailedMessage(RegisterScreenState state) {
+      return state.maybeWhen(
+        orElse: () => const SizedBox(),
+        failed: (status) => Padding(
+          padding: const EdgeInsets.only(bottom: 20),
+          child: SizedBox(
+            width: double.maxFinite,
+            child: ErrorMessage(message: status),
+          ),
+        ),
+      );
+    }
+
     return FormBuilder(
       key: _formKey,
       child: Scaffold(
@@ -57,15 +70,19 @@ class RegistrationScreen extends ConsumerWidget {
           child: ListView(
             padding: const EdgeInsets.symmetric(horizontal: 12),
             children: [
-              const SizedBox(height: 20),
+              const SizedBox(height: 10),
 
-              Text(
-                'Create your ${_getUserType()}',
-                style:
-                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 20),
+                child: Text(
+                  'Create your ${_getUserType()}',
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 20),
+                ),
               ),
 
-              const SizedBox(height: 20),
+              buildFailedMessage(ref.watch(registerProd)),
+
               // buildFailedMessage(state),
               FormTextField(name: 'email', label: 'Email', validators: [
                 FormBuilderValidators.required(),
@@ -100,7 +117,7 @@ class RegistrationScreen extends ConsumerWidget {
                   ]),
               FormTextField(
                   name: 'passwordConfirm',
-                  label: 'Re Type Password',
+                  label: 'Password Confirm',
                   obscure: true,
                   validators: [
                     FormBuilderValidators.required(),

@@ -50,7 +50,7 @@ class _RegistrationNotifier extends StateNotifier<RegisterScreenState> {
     final failure = successOrFail.failure;
     if (failure != null) {
       state = const RegisterScreenState.failed(
-        status: 'Something went wrong with registration',
+        status: 'Registration has failed',
       );
       return;
     }
@@ -58,7 +58,7 @@ class _RegistrationNotifier extends StateNotifier<RegisterScreenState> {
     final data = successOrFail.data;
     if (data == null) {
       state = const RegisterScreenState.failed(
-        status: 'Something went wrong with data',
+        status: 'Registration has failed',
       );
       return;
     }
@@ -67,7 +67,7 @@ class _RegistrationNotifier extends StateNotifier<RegisterScreenState> {
     final successOrFail2 = await createSPUseCase(params: params2);
     state = successOrFail2.fold(
       (error) => const RegisterScreenState.failed(
-        status: 'Something went wrong with data',
+        status: 'Registration has failed',
       ),
       (data) => const RegisterScreenState.success(),
     );

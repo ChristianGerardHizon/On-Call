@@ -140,7 +140,7 @@ class AdminSPListScreen extends ConsumerWidget {
                               ),
                               children: [
                                 TextSpan(
-                                    text: item.isActive ? 'Active' : 'InActive',
+                                    text: item.isActive ? 'Active' : 'Pending',
                                     style: const TextStyle(
                                         fontWeight: FontWeight.w400)),
                                 const WidgetSpan(

@@ -16,13 +16,68 @@ class AdminDashboardScreen extends StatelessWidget {
           children: [
             SizedBox(
               width: double.infinity,
-              height: 400,
-              child: LineChartWidget(),
+              height: 180,
+              child: Padding(
+                padding: EdgeInsets.all(12),
+                child: HeaderCard(
+                  title: 'Support Tickets',
+                  subtitle: '0',
+                ),
+              ),
             ),
-            SizedBox(
-              width: double.infinity,
-              height: 400,
-              child: LineChartWidget(),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12),
+              child: Card(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SizedBox(height: 10),
+                    Text('Daily User Requests'),
+                    SizedBox(height: 10),
+                    SizedBox(
+                      height: 200,
+                      width: double.maxFinite,
+                      child: LineChartWidget(),
+                    )
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12),
+              child: Card(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SizedBox(height: 10),
+                    Text('Daily Completed Requests'),
+                    SizedBox(height: 10),
+                    SizedBox(
+                      height: 200,
+                      width: double.maxFinite,
+                      child: LineChartWidget(),
+                    )
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12),
+              child: Card(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SizedBox(height: 10),
+                    Text('User Sign Up'),
+                    SizedBox(height: 10),
+                    SizedBox(
+                      height: 200,
+                      width: double.maxFinite,
+                      child: LineChartWidget(),
+                    )
+                  ],
+                ),
+              ),
             )
           ],
         ),
